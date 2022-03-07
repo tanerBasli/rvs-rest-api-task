@@ -1,0 +1,1115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+	<changeSet id="1" author="admin"  >
+		<sql>
+CREATE TABLE IF NOT EXISTS rentals (
+    id SERIAL PRIMARY KEY,
+    name text,
+    type text,
+    description text,
+    sleeps integer,
+    price_per_day bigint,
+    home_city text,
+    home_state text,
+    home_zip text,
+    home_county text,
+    home_country text,
+    vehicle_make text,
+    vehicle_model text,
+    vehicle_year integer,
+    vehicle_length numeric(4,2),
+    created timestamp,
+	updated timestamp,
+    lat double precision,
+    lng double precision,
+    primary_image_url text,
+    owner_name text,
+    owner_avatar_url text
+);
+CREATE TABLE IF NOT EXISTS rental_images (
+    id SERIAL PRIMARY KEY,
+    rental_id integer REFERENCES rentals(id),
+    url text
+);
+CREATE INDEX IF NOT EXISTS rental_images_rental_id_fkey ON rental_images(rental_id);	
+		</sql>
+	</changeSet>
+	<changeSet id="2" author="admin">
+		<sql>
+INSERT INTO rentals
+(id, name, type, description, sleeps, price_per_day, home_city, home_state, home_zip, home_county, home_country, vehicle_make, vehicle_model, vehicle_year, vehicle_length, created, updated, lat, lng, primary_image_url, owner_name, owner_avatar_url)
+VALUES(4447, '''Abaco'' VW Bay Window: Westfalia Pop-top', 'camper-van', '3 DAY MINIMUM RENTAL
+
+Abaco is a 1978 Manual Shift Deluxe Westfalia Pop-Top Camper :: 2 sleeping berths (sleeps 4 adults), ice box, sink, potable water tank, propane camp stove, RV electrical/water hook-ups, SmartPhone jack
+
+We, your genial hosts at Vintage Surfari Wagons, are experts at facilitating California Epic Road Trips in our nostalgic yet robust VW Camper Buses. We have been for over 14 years now. Our intimate knowledge of this world class environment, coupled with the deep experience and intuitive understanding of what keeps these unique dream machines on the road is unsurpassed by any competitor in our region.
+
+Before being resuscitated and restored, Abaco had been on life support for 11 years. And although her mango green Manual Shift Deluxe Westfalia Pop-Top Camper body hasn''t changed, metamorphosis has given her a revitalized spirit, an abundance of energy, and new dreams of travel and exploration. Because Abby (a new name for a new beginning) knows what its like to sit at the brink of an eruption, to traverse the healing highways, and come out a better self, she is the perfect companion to take you on your trip to transformation. 
+
+VDUB TRAVEL TIP #91: Better late than never!     
+
+VDUB FACTOID: The Abaco Islands lie in the northern Bahamas. The oceanic islands (also known as an archipelago) are mainly of volcanic origin.', 4, 16900, 'Costa Mesa', 'CA', '92627', '', 'US', 'Volkswagen', 'Bay Window', 1978, 15.00, '2016-07-10 02:06:14.869', '2020-02-16 17:57:33.594', 33.64, -117.93, 'https://res.cloudinary.com/outdoorsy/image/upload/v1528586451/p/rentals/4447/images/yd7txtw4hnkjvklg8edg.jpg', 'Bill &amp; Diane Staggs', 'https://res.cloudinary.com/outdoorsy/image/upload/v1528834546/p/users/1138/images/xeu74cpjxut3aibdkyi4.jpg');
+INSERT INTO rentals
+(id, name, type, description, sleeps, price_per_day, home_city, home_state, home_zip, home_county, home_country, vehicle_make, vehicle_model, vehicle_year, vehicle_length, created, updated, lat, lng, primary_image_url, owner_name, owner_avatar_url)
+VALUES(11368, 'Maupin: Vanagon Camper', 'camper-van', 'MEET MARVELOUS MAUPIN
+Maupin is a town in Eastern Oregon located on the beautiful Deschutes River. As a camper van, Maupin is a 1989 Vanagon Camper that features a clean, comfortable interior with upgraded LED lighting throughout. Maupin has a manual transmission so please be sure you are comfortable driving stick.
+
+Maupin boasts brand new speakers for great sound and a Bluetooth enabled digital media receiver lets you plug in your iPhone/Android device to play tunes. The receiver also allows for hands free calling through the stereo with a microphone placed near the rear view mirror.
+
+Additional upgrades include an auxiliary battery that powers the fridge and other electric devices so that you can go for days at a time without worry about draining the starting battery. New screens for the sliding windows have also recently been installed. Maupin’s owner is a fixture in the local Volkswagen van community, and one of the first people to join the GoCamp fleet. In a previous life he worked in the airline industry. Customer service is his middle name.
+
+Maupin is great for cruising around the Pacific Northwest and taking in all of the natural beauty that can only be accessed in a home on wheels with such a small footprint. Maupin would be perfect for your trip; he’s a classic Westy and, with his beautiful color, sure to turn heads while you are on the road. This is the kind of vehicle that makes you realize that all the tiny, insignificant worries of your stressful life are nothing more than cosmic dust. That’s pretty impressive for a 25+ year old van.
+
+This van owner has limited check-out times. On Tuesdays and Wednesdays, anytime will work! Any other day of the week, you’ll pick up the van after 5:30 p.m.
+
+HOP IN AND GO
+All GoCamp vans are considered “road trip ready.” Whether you are flying in from out of town or looking to explore your own backyard, all you really need to do is stop for groceries before hitting the road. All cookware and tableware is included, as is bedding and a wide array of camping gear. You’ll be sent a detailed list of all the items included in the van before your trip so you can plan accordingly.
+
+For lots more information on this camper van: www.gocampcampervans.com', 4, 15000, 'Portland', 'OR', '97202', '', 'US', 'Volkswagen', 'Vanagon Camper', 1989, 15.00, '2017-04-22 19:32:51.149', '2020-06-24 23:00:36.476', 45.51, -122.68, 'https://res.cloudinary.com/outdoorsy/image/upload/v1498568017/p/rentals/11368/images/gmtye6p2eq61v0g7f7e7.jpg', 'GoCamp  ', 'https://res.cloudinary.com/outdoorsy/image/upload/v1589481915/p/users/47627/images/hp2tg9yikmbwab6xbm7q.jpg');
+INSERT INTO rentals
+(id, name, type, description, sleeps, price_per_day, home_city, home_state, home_zip, home_county, home_country, vehicle_make, vehicle_model, vehicle_year, vehicle_length, created, updated, lat, lng, primary_image_url, owner_name, owner_avatar_url)
+VALUES(21399, '1984 Volkswagen Westfalia', 'camper-van', 'This Vanagon (AKA Gus) has been built for seeing all the best parts of the U.S.A. it is equipped with Solar, auxiliary power to charge anything you need or listen to music without worry if running down batteries, fridge, sink, stove, outdoor shower, awning, lots of storage and 2 beds that can sleep 2 people each! 
+
+This is not a beater van as every component from engine to suspension has been updated and is maintained regularly. This is the perfect coastal cruiser and vehicle for stealth camping, national parks and overall exploring.  
+
+', 4, 18000, 'San Diego', 'CA', '92037', '', 'US', 'Volkswagen', 'Westfalia', 1984, 16.00, '2017-09-03 02:19:34.951', '2018-09-02 23:10:15.847', 32.83, -117.28, 'https://res.cloudinary.com/outdoorsy/image/upload/v1504395813/p/rentals/21399/images/nxtwdubpapgpmuc65pd1.jpg', 'Daniel Hopkins', 'https://res.cloudinary.com/outdoorsy/image/upload/v1526944391/p/users/166643/images/bqkc3epbwzofejfjbjx3.jpg');
+INSERT INTO rentals
+(id, name, type, description, sleeps, price_per_day, home_city, home_state, home_zip, home_county, home_country, vehicle_make, vehicle_model, vehicle_year, vehicle_length, created, updated, lat, lng, primary_image_url, owner_name, owner_avatar_url)
+VALUES(25403, 'Sm. #1 (Sleeps 2) - Check Dates for Price', 'camper-van', 'Sleeps 2 in 1 queen bed. Bed is 6" thick with a memory foam topper. Rental included fitted sheet.
+
+Interior Height 4'' 4"
+
+Seating for 2 adults with seat belts. Extra seating for two more can be added upon request.
+Kitchen includes hand pump sink, counter, kitchen cabinet, fold out kitchen table, 31 qt refrigerator, and 2 burner Coleman stove (16 oz propane fuel canister not included) 
+Camp chairs to match the number of people on your trip
+A bench for sitting, relaxing, and getting ready for each day''s adventures
+Easy to use magnetic mosquito nets let you keep the doors and windows open while keeping the bugs out
+Ample hooks for hanging items and storage under the bed and bench.
+Has trailer hitch with trailer light connection
+Approximately 20 mpg highway
+
+Rentals include 150 miles/day. Additional Miles are $0.30/mile. 
+Additional Mileage options: 100 miles/day for $25/day (7 day minimum)
+Additional Mileage option: Unlimited miles for $35/day (14 day minimum)', 2, 8900, 'Salt Lake City', 'UT', '84104', '', 'US', 'Ford', 'Transit 350', 2016, 19.00, '2017-10-18 23:49:02.122', '2020-07-20 18:16:33.576', 40.73, -111.92, 'https://res.cloudinary.com/outdoorsy/image/upload/v1508688886/p/rentals/25403/images/jkqxknddnuq6fvmyatke.jpg', 'Daryl Deprey', 'https://res.cloudinary.com/outdoorsy/image/upload/v1503695513/p/users/163546/images/hvcdpiogcx1mcyjtzj3z.png');
+INSERT INTO rentals
+(id, name, type, description, sleeps, price_per_day, home_city, home_state, home_zip, home_county, home_country, vehicle_make, vehicle_model, vehicle_year, vehicle_length, created, updated, lat, lng, primary_image_url, owner_name, owner_avatar_url)
+VALUES(40129, 'Stardust2005Mercedes-BenzSprinter', 'camper-van', '#hawaiivanlife Converted sprinter van definintion of vanlife. On demand propane shower in back. 24 hr freezer/fridge. Fantastic fan, lightbar, campchef oven, with 2 burner top. 6 gallon faucet. 15 gallon hot campflux shower LED Dimmer Lights. 20 + gallon per miles. Turbo Diesel 2005 T1N Sprinter ', 4, 8000, 'San Diego', 'CA', '92109', 'San Diego', 'US', 'Mercedes-Benz', 'Sprinter', 2005, 20.00, '2018-03-13 06:13:22.029', '2020-07-20 03:20:36.086', 32.8, -117.24, 'https://res.cloudinary.com/outdoorsy/image/upload/v1521261348/p/rentals/40129/images/wn0tx6meifqtrnwjmeoq.jpg', 'Aloha  Van Life ', 'https://res.cloudinary.com/outdoorsy/image/upload/v1550982421/undefined/users/240898/images/b8vulv8qknjugy1xvwe6.jpg');
+INSERT INTO rentals
+(id, name, type, description, sleeps, price_per_day, home_city, home_state, home_zip, home_county, home_country, vehicle_make, vehicle_model, vehicle_year, vehicle_length, created, updated, lat, lng, primary_image_url, owner_name, owner_avatar_url)
+VALUES(46190, '2003 Winnebago Eurovan Camper Eurovan Camper', 'camper-van', 'Coronavirus Note RE Refunds/Reservations: 
+- Our rental reservation policy is MODERATE:  75% refund up to 7 days before pickup, then 50% refund for remaining days. Please confirm your campground availability BEFORE you reserve a camper.
+- We are adding a 2 day calendar buffer between rental dates to allow our campers to air out after renters, and we are cleaning/disinfecting them THOROUGHLY. 
+- Due to Coronavirus, we will NOT offer our own bedding/linens/towels/pillows/mattress covers during the rental period but are asking our renters to provide -- and clean -- their own. 
+- We have a 4 night minimum rental.  
+- Additionally, Outdoorsy has a promo code offer for 10% off any rental using the promo code SPRING10. 
+
+THE VAN: 
+Gretta Van Lefturn is a 2003 VW Eurovan Full Camper. Outfitted by Winnebago, USA, she features the same basic "Westfalia" layout as other classic VW Vanagon and Microbus-chassis campers, but with a few added and more modern touches. These include:
+
+- An upfitted Truckfridge TF49 refrigerator. 
+- Frigid air conditioning.
+- A powerful propane furnace for cold-weather camping.
+- A built-in rear rinse-off outdoor shower. 
+- A lift kit, Fox Shocks and Yokohama off-road tires.
+- Dual front airbags, anti-lock brakes, front wheel drive traction control and a butter-smooth 201-horsepower VR6 engine. NOTE: This van REQUIRES premium fuel. 
+
+Outfitting: 
+Fully outfitted for camping, Gretta''s perfect for trekking along the coast, using as a basecamp for exploring downtown Charleston and other nearby cities and our nearby barrier islands like Folly and Isle of Palms and campgrounds like Edisto, Huntington Beach and Hunting Island. She also handles the mountain roads around Asheville like a cross between a Passat and a Sprinter. 
+
+Additional features: 
+- Auxiliary battery for lights, computer, whatever. Automatically charged anytime the van runs, or is plugged into shore power.
+- Pop top tent with front bug screen and a comfortable upstairs bed - double-size and comfortable for two adults, with extra pad and bug screening. 
+- The rear bench seat transforms instantly into a nearly double-sized bed that will sleep 2. (Though this bed is probably better for 2 kids than adults) We have an extra foam pad for this bed too.
+- Privacy curtains for all windows. 
+- Fans. 12V and 120V.
+- Both front seats are super comfortable with adjustable armrests. They rotate to turn the van''s interior into a room.
+- Stereo with bluetooth lighter adaptor. 
+- Upgraded wheels/tires/suspention. Lift kit from GoWesty.com. This van is front wheel drive. 
+- Bug screens on driver and passenger side sliding windows and poptop. 
+- Rear airplane-style reading lights. 
+- Three point (shoulder) seatbelts for all four seats. 
+- Safety inspected.
+- NOTE: I can provide a shore-power air conditioner that ducts into the roof of the van. I''ll also have to show you how to use the setup!
+
+Kitchen: Van features a sink with 11 gallon tank, adjustable electric pump faucet with stainless steel dish drain pan and two burner propane stove.
+- Truckfridge TF49 refrigerator. Replaces original stock unit and is colder and far more reliable. 
+- Cups, bowls, plates and utensils.
+- Coffee cups.
+- Cookware: Pots, pans, skillet, grater, strainer, measuring cups, openers, kettle, etc.
+- Necessities: Paper towels, toilet paper, (1 roll each) ziplocs, foil, trashbags, and other useful necessities.
+- French press coffee maker.
+- Campsuds soap for dishes and human bodies.
+- Trash can.
+- Cleaning spray.
+- Thermos.
+- Salt and pepper. Cooking oil spray.
+- Lighters and matches.
+
+Camping Gear:
+- 1 Headlamps, and a couple of flashlights.
+- ARB 2.5 meter square Awning. Super easy to deploy.
+- Sleeping: Waterproof mattress pads, 4 pillows, bottom sheet and sleeping bags.
+- Camp table.
+- Basic toolkit.
+- Camp chairs.
+- External propane stove. Runs on propane bottles.
+- First aid kit.
+- Whisk broom.
+
+Your host is a journalist, who has been a VW camper owner for years and have written about them in Outside and the New York Times. I think they''re about the greatest vehicle ever invented. 
+Outside Magazine - The Ride of Your LIfe. https://www.outsideonline.com/2093836/ride-your-life
+Outside Magazine - The Purpose Driven Van. https://www.outsideonline.com/1856606/purpose-driven-van
+Outside Magazine - the Greatest Car Ever Made. https://www.outsideonline.com/1859811/best-adventure-vehicle-vanagon
+NYTimes - Travel - Drawn to a 1980''s camper with the soul of an SUV. http://www.nytimes.com/2003/07/18/travel/driving-drawn-to-a-1980-s-camper-with-the-soul-of-an-suv.html
+NYTimes - Travel - California Coasting. 
+http://www.nytimes.com/2007/03/09/travel/escapes/09camp.html
+
+Check my other campers - including my 1987 VW Vanagon Westfalia and a vintage Shasta Airflyte at eastcoastwestys.com
+', 4, 13000, 'Charleston', 'SC', '29412', '', 'US', 'Winnebago Eurovan Camper', 'Eurovan Camper', 2003, 17.00, '2018-04-13 22:43:12.875', '2020-06-27 20:23:01.315', 32.69, -79.96, 'https://res.cloudinary.com/outdoorsy/image/upload/v1523649590/p/rentals/46190/images/elinlzv6fpnrktik4wqh.jpg', 'Chris Dixon', 'https://res.cloudinary.com/outdoorsy/image/upload/v1521308970/p/users/241330/images/eooycbu56l5owhltix6u.jpg');
+INSERT INTO rentals
+(id, name, type, description, sleeps, price_per_day, home_city, home_state, home_zip, home_county, home_country, vehicle_make, vehicle_model, vehicle_year, vehicle_length, created, updated, lat, lng, primary_image_url, owner_name, owner_avatar_url)
+VALUES(52210, '2002 Volkswagen Eurovan Weekender Westfalia', 'camper-van', 'This Black Beauty is a surf rat, beach bum, and mountain man''s dream.  With custom neoprene seat covers, you can surf and swim comfortably all day without worrying too much about getting sand in the upholstery.  Includes a new Bluetooth sound system with upgraded speakers, a clip-on fan for hot days that can plug into the auxiliary battery and keep guests cool, a roof rack with surf/paddle board pads, full curtains for privacy, tinted windows, super fun custom LED lighting, a newly added awning, and all kinds of extra add-on features to make your camping adventure even more fun. 
+
+This is the weekender model, not the camper.  The weekender has a larger bed on the lower bunk in place of the stove/sink/fridge setup.  If you need the stove or fridge, see our add-on options. 
+
+Optional linen package, beach cruisers, Coleman gas grill, Coleman or Yeti cooler, camp kitchen, tent, air mattress, extra linens, camp chairs, beach umbrellas, Ez-up tent awning,  hammock, surf boards, and state park permit. Pets considered with additional small fee. 
+
+** We’re sorry, but this is our family van and is not to be rented out for festivals including Burning Man and Coachella. No exceptions. 
+
+***If the rental is a long term rental or includes several of the add-ons, the owners may include an additional security deposit to cover the items in case of damage/loss as well as ask the renters to include roadside assistance.   
+
+
+
+
+
+', 4, 15000, 'Rancho Mission Viejo', 'CA', '', 'Orange', 'US', 'VW', 'Eurovan Weekender Westfalia', 2002, 0.00, '2018-05-18 06:13:41.212', '2020-01-15 20:54:28.578', 33.53, -117.63, 'https://res.cloudinary.com/outdoorsy/image/upload/v1526614056/p/rentals/52210/images/nou2lx0h0dsjzbqeotuf.jpg', 'libby b', '');
+INSERT INTO rentals
+(id, name, type, description, sleeps, price_per_day, home_city, home_state, home_zip, home_county, home_country, vehicle_make, vehicle_model, vehicle_year, vehicle_length, created, updated, lat, lng, primary_image_url, owner_name, owner_avatar_url)
+VALUES(119031, '2017 Transit Adventure Van', 'camper-van', 'Say hello to Javi - a Ford Transit 250 high-roof set up as a most-awesome camping/travel experience!  This RV is built with storage in mind - it has a massive ‘gear trunk’ in back for bulk/dirtier items and cabinets and drawers galore in the house area.
+
+The van is also built for extended off-grid, or even simply un-plugged, adventure capability.  200 watts of roof-mounted solar keep the 300 amp-hours of AGM power storage topped off, with a small fridge, 2 high capacity roof fans, recessed LED lighting, and a 2000 watt pure-sine inverter wired into the house area to provide normal 120 volt home-outlet power along with USB charger ports.
+
+Javi makes the most of van-space, and provides the must-have luxury of a queen sized bed that also folds up and away into a couch &amp; relaxing area when not in use, and a 6-foot, 5-inch ceiling height.  There is also easy-access water storage/drainage under the sink, and there is no complicated drainage-pipes system that has to be dumped properly and no worrying about freezing risks or expensive repairs if damaged.
+
+You’re set for cooking - you’ve got an easy to use butane single-burner inside, along with an outdoor propane grill if you prefer to cook with the sun on your shoulders.  You have running water via electric up pump for washing hands or filling bottles to take on a hike.
+
+WHAT MAKES THIS UNIQUE (and what I do differently for you to ensure you’ll have the best experience possible…)
+
+If you’ve been camping, you know how much of a headache it is to finally arrive at your perfect destination only to realize you’ve forgotten to pack something important...I know, because I’ve found myself in that situation before, and little things like “we forgot the sunscreen, propane, and bug spray!” can really put a dent in your fun.  Heck, even forgetting ketchup or salt/pepper can be a bummer.  I have done my absolute best to ensure that every crucial convenience, cooking, recreational, and safety item will be there, stored &amp; ready if you need it - always.  If you forgot it, you need it, or you just noticed something useful in the included gear - feel free to help yourself to the pre-packed &amp; at-the-ready kits, stored and labeled for you.  No extra charges.
+
+Toiletries and Convenience: sunscreen, bug spray, charger cables, a full complement of all types of batteries, portable USB charger/battery for phones, extra Apple/Android charger cables, small torch/lighter, rechargeable headlamps, LED lanterns, 12V USB plug-in-charger, bluetooth speaker, plus travel-sized packs of commonly forgotten stuff: toothbrushes, deoderants, dry shampoo, ibuprofen, antacids, etc etc.
+
+Bedding - I have various bedding options from warm-weather light stuff through 0-degree comfy-cozy sleeping bags.
+
+Fun Items -  ‘instant’ beach shelter, 2 camp chairs, 10”x12” ground mat/carpet, portable/instant propane fire pit, hammock &amp; paracord, Mr Heater Buddy, multiple refills of green-bottle propane and butane, 10x10 pop-up shade/shelter.   
+
+Safety Item Kit - portable lithium jump starter, tire sealant, 12V tire inflator, fire extinguisher, tire pressure gauge (van has built in tire pressure monitors as well). 
+
+Kitchen items - all the basics like plates, utensils, glasses, pots/pans, etc and all the cooking stuff you could ever need like cooking spray, LOTS of spices &amp; condiments &amp; such, grill mats, etc etc.  If it’s there - you are welcome to use it to help make something tasty!
+
+Athletic Stuff: 12V air pump for air mattress or boats, yoga mats, hiking poles, extra backpacks, extra coats, paracords, squeezable water bottles, etc.
+
+Anything else to know?  Sure!  Read on, dear camper…
+(TLDR - too long; didn’t read - below simply states that the van has no cruise control, no shower/toilet setup, and may have imperfect details or fit &amp; finish imperfections you won’t find on a brand-new Winnebago RV, as that is not its intent)
+
+This van is built with a philosophy of convenience and simplicity - heavy on convenience and useful gear, and low on granite countertops.
+
+This philosophy means that every feature/part of this van should simply *make sense* without explanation - no complicated plumbing and/or dump valves, no generators or confusing electrical work, no hidden water storage involving chemicals or long piping through questionably dirty hoses, etc.  
+
+There are a few important choices made with this van:
+
+The chassis is a base Transit - that means no cruise control (I don’t miss it, to be honest).  It does have bluetooth audio and a backup camera, however (must-haves!) 
+
+-There is no integrated shower/toilet.  That all takes up too much space, and you don’t want to spend time trying to find &amp; use a dump station at the end of your trip.  Shower-wise, you can move/place the electric 
+-The bed is not power - you pull it forward, and then pull up slightly on the sides via the attached hidden handles to push it back into place....and you’ll need to be able to lift yourself up a bit or use something as a step to get up into bed, as the bed platform is pretty high to allow for more storage beneath.
+
+That''s it - enjoy &amp; have fun!
+', 2, 16500, 'Sacramento', 'CA', '95811', '', 'US', 'Ford', 'Sacramento', 2017, 20.00, '2019-05-06 03:06:06.545', '2020-06-30 20:23:07.957', 38.57, -121.49, 'https://res.cloudinary.com/outdoorsy/image/upload/v1562023338/p/rentals/119031/images/wchguimw6h3u9oonba9b.jpg', 'Steven Kayser', 'https://res.cloudinary.com/outdoorsy/image/upload/v1562025622/p/users/689664/images/adgfi2i1wszgrawmizwb.jpg');
+INSERT INTO rentals
+(id, name, type, description, sleeps, price_per_day, home_city, home_state, home_zip, home_county, home_country, vehicle_make, vehicle_model, vehicle_year, vehicle_length, created, updated, lat, lng, primary_image_url, owner_name, owner_avatar_url)
+VALUES(82458, 'Maui "Alani" camping car SUBARU IMPREZA 4WD  -Cold AC.', 'camper-van', '2003 SUBARU IMPREZA 4WD
+Tepui tent
+sleeps 2.
+
+The tent come up with rain fly, but it is not waterproof. If you wish to add waterproof Tepui cover, it would be additional $40.
+
+If you wish to include beach kit or rinse  kit or cooking kit  it’s possible for one time charge of $45 per each 
+
+Our cars are having strict NON SMOKING POLICY!!!!!!
+
+You must be 25 years old to be able to drive our campers!!!
+
+We require proof of insurance and also 24 hr road assistance. If you don’t have it please contact us ahead of time!
+
+We also provide free shuttle from airport in Kahului - Monday through Friday 10-4;
+After hours your camper will be parked by our office (located 4 minutes from the airport) and we will provide key box and code)
+
+
+With warm Aloha from Maui 
+Rudy &amp; Daniela 
+', 2, 5900, 'Kahului', 'HI', '96732', '', 'US', 'SUBARU IMPREZA 4WD', 'SUBARU IMPREZA 4WD', 2003, 13.00, '2018-08-09 23:39:24.537', '2020-03-11 00:23:03.224', 20.88, -156.45, 'https://res.cloudinary.com/outdoorsy/image/upload/v1538027810/p/rentals/82458/images/bphrohl2r4wxc8wg3v11.jpg', 'rent for less maui maui', 'https://res.cloudinary.com/outdoorsy/image/upload/v1570381272/p/users/417355/images/wxusul2qqyb7wdzu3v86.jpg');
+INSERT INTO rentals
+(id, name, type, description, sleeps, price_per_day, home_city, home_state, home_zip, home_county, home_country, vehicle_make, vehicle_model, vehicle_year, vehicle_length, created, updated, lat, lng, primary_image_url, owner_name, owner_avatar_url)
+VALUES(91133, 'Betty!    1987 Volkswagen Westfalia Poptop Manual with kitchen!', 'camper-van', 'Classic, super fun road tripper. Iconic all the way! Incredible thoughtful design. Friendly, easy-going hosts. No mileage fee or extra charges - all inclusive pricing!
+
+The van sleeps 4, has a table and 2 beds, swivel chair, stove, sink, cooler, radio with USB port, and lots of storage.  Incredible design, very comfortable and roomy.
+
+Full camping kit included: table, chairs, hammock, stove/grill, pots, pans, dishes, silverware, utensils, mugs, cups, can opener, coffee pot, lantern, cooler, sleeping bags, pillows, towels, frisbee, awning, camp rug, swiss army knife, duct tape, etc. Everything you need, just pack your clothes! 
+
+Tent and bear spray available upon request. If you have other special requests, just ask! 
+
+We will even come pick you up and drop you off at the airport! Free service during reasonable hours, even evenings and weekends.  Or convenient pick up in Missoula a half mile from the nearest grocery store for supplies.
+
+Rules:  100% no smoking, full insurance is mandatory, 4 passengers maximum, no one-way trips - must return van to Missoula. Travel within the US (excluding Alaska) and Canada only. Discounts for longer rentals: one week to 6 months,  just ask!
+
+Note:  This vehicle is a stick-shift!
+
+Security Deposit $1500 - fully refundable if van is returned in good condition. ', 4, 25000, 'Missoula ', 'MT', '59808', '', 'US', 'Volkswagen', 'Westfalia', 1987, 15.00, '2018-09-02 00:03:55.208', '2020-07-14 22:59:01.614', 46.92, -114.09, 'https://res.cloudinary.com/outdoorsy/image/upload/v1535836865/p/rentals/91133/images/blijuwlisflua72ay1p2.jpg', 'Sally Cannata', '');
+INSERT INTO rentals
+(id, name, type, description, sleeps, price_per_day, home_city, home_state, home_zip, home_county, home_country, vehicle_make, vehicle_model, vehicle_year, vehicle_length, created, updated, lat, lng, primary_image_url, owner_name, owner_avatar_url)
+VALUES(105564, 'Daisy', 'camper-van', 'Daisy is a 1979 Devon Moonraker. She’s our youngest campervan and our very own “Little Miss Sunshine”.
+She''s a real eye catcher and brings smiles wherever she goes.', 4, 8900, 'Bangor', '', 'BT23 7XE', '', 'IE', 'Volkswagen', 'Campervan', 1979, 4.00, '2019-01-22 17:06:41.673', '2020-03-06 19:49:00.820', 54.63, -5.67, 'https://res.cloudinary.com/outdoorsy/image/upload/v1548176735/p/rentals/105564/images/lwm0elb5mzs8m7gqxjta.jpg', 'Happy Campers NI', 'https://res.cloudinary.com/outdoorsy/image/upload/v1549482874/p/users/487054/images/mv3vklcq4epr2i9psw8v.png');
+INSERT INTO rentals
+(id, name, type, description, sleeps, price_per_day, home_city, home_state, home_zip, home_county, home_country, vehicle_make, vehicle_model, vehicle_year, vehicle_length, created, updated, lat, lng, primary_image_url, owner_name, owner_avatar_url)
+VALUES(108507, '*ESSENTIAL WORKERS - Pearl - The Maui Camping Cruiser', 'camper-van', '*ESSENTIAL WORKERS
+I have 5 campers available to use as parked lodging. Everything below is included. All you need is access to a bathroom. I have people stay in my campers for weeks to a month or longer. Completely ready to go and will deliver. I''ve lowered the price to bare minimum. You can also contact direct at 808 2 5 0 4834 if you need to discuss booking. Text ok too. Stay well everyone. Aloha. 
+
+The "Maui Camping Cruiser" is a customized camper all setup for camping Island Style on Maui.  It''s to have fun on Maui without spending a fortune to visit :-).
+
+Included for ya fresh sheets, pillows and blankets on a memory foam style mattress for very comfortable rest and relaxation.  Also many toiletries such as soap, brand new tooth paste &amp; brushes, shampoo etc. 
+
+For fun... 2 full snorkel sets (mask, snorkel and fins), 2 camping/beach chairs and a fold out table. Also we provide a tent for your enjoyment if ya like, ice chest (cooler), propane camping stove, cooking/eating utensils, instant coffee/tea and much much more. 
+
+There is a power supply for USB/Phone charging.
+
+There are racks on top for boards, kayak or anything else big you may want to tie down.
+
+All ya need to bring is clothing, personal items, bathing suits and Aloha. :-)
+
+A common question is why are you so affordable? The answers easy :-)... Absolutely love Maui and all it has to offer and love to share that with you. Have fun seeing your smiles and hearing stories of your Maui Camping Cruiser experience. Goal is to make it affordable for you to visit Maui. :-)
+
+Thanks for reading and look forward to sharing Aloha with you soon. :-)', 2, 3000, 'Kihei', 'HI', '96753', '', 'US', 'Ford', 'Other', 2010, 17.00, '2019-02-16 01:04:21.928', '2020-04-10 20:19:32.108', 20.77, -156.45, 'https://res.cloudinary.com/outdoorsy/image/upload/v1550269521/p/rentals/108507/images/zlruuz6ll72taorfwjs1.jpg', 'Jay Baker', 'https://graph.facebook.com/10217329108195398/picture?width=300&amp;height=300');
+INSERT INTO rentals
+(id, name, type, description, sleeps, price_per_day, home_city, home_state, home_zip, home_county, home_country, vehicle_make, vehicle_model, vehicle_year, vehicle_length, created, updated, lat, lng, primary_image_url, owner_name, owner_avatar_url)
+VALUES(109101, 'The Coolest Camper Van Around', 'camper-van', 'Awesome camper van with rooftop deck! Located 5 min from Provo airport (pickup available). Easy train ride from SLC airport. 
+
+Sleeps 2 inside on queen mattress. Flip down toddler bed &amp; extra seating bench optional (seats 5 total w/bench). Can easily sleep 2 more on rooftop deck in optional tent. 
+
+She ain’t the Ritz Carlton, but she’s an amazing adventure-mobile. I will include all the camping necessities, such as: 
+•	Blankets, pillows &amp; sheets
+•	A good-sized folding table
+•	Coleman gas stove &amp; propane 
+•	Frying pan, pot &amp; cutlery
+•	2 camping chairs (great on rooftop deck!) 
+•	5 gallon water jug, filled
+•	Little shovel &amp; biodegradable toilet paper
+•	Hatchet, lighter, knife, binoculars 
+•	Electric lantern
+•	400-watt power inverter for cigarette lighter
+•	Ice chest 
+•	A couple trash bags 
+•	Little camp shower 
+•	First aid kit
+* Hammock and straps 
+
+Some OPTIONAL extras for a one-time charge: 
+•	Large duffel of firewood - $10
+•	2-man rooftop tent - $15
+•	Car seat for kids - $20
+•	Small pack and play for baby, fits inside van - $10
+•	Canoe - $25/day
+
+Please note this van does not have AC, but most windows roll down or pop open. Heater works great. 
+
+This is my wife and I’s favorite hobby, and we’re happy to share it with you. We’re not a business, so reach out with any questions or requests and we’d be happy to do our best to accommodate. There is a flat rate $25 cleaning fee. 
+
+Happy camping! ', 4, 7900, 'Provo', 'UT', '84601', '', 'US', 'Dodge', 'B Van', 2000, 16.00, '2019-02-21 01:26:13.477', '2020-06-24 18:29:29.054', 40.24, -111.7, 'https://res.cloudinary.com/outdoorsy/image/upload/v1556142483/p/rentals/109101/images/ea2vvbovq0tvouj00fad.jpg', 'Kenton McRae', 'https://res.cloudinary.com/outdoorsy/image/upload/v1595346024/p/users/594256/images/ojhpi5vavsf4nsw3vhtf.png');
+INSERT INTO rentals
+(id, name, type, description, sleeps, price_per_day, home_city, home_state, home_zip, home_county, home_country, vehicle_make, vehicle_model, vehicle_year, vehicle_length, created, updated, lat, lng, primary_image_url, owner_name, owner_avatar_url)
+VALUES(115462, 'Ford Transit Campervan', 'camper-van', 'Our high roof modern-rustic campervans are a great addition to your Western Canadian or Pacific Northwest road trip. Gear up for a #vanlife adventure you won''t soon forget. **All our vans come with digitally controlled Espar heaters to keep you toasty warm. Enjoy winter camping at its finest!**
+
+Features list:
+- Ford Transit High Roof Van
+- EcoBoost® Engine
+- Rear wheel drive
+- Automatic transmission
+- Kitchen galley with butcher block countertop
+- Bedding incl. plush pillows and warm duvet
+- 2 enamel mugs
+- Large fresh water container
+- Large grey water storage container
+- Plates, Flatware and dining for 2 people
+- Cooking accessories kit
+- Swivel passenger seat
+- Large fantastic vent fans
+- Three-zone lighting
+- USB outlets throughout the van
+- 2 folding camp chairs
+- Coleman cooler
+- Espar digitally controlled heater
+- Ample clothes, gear and food storage throughout
+- Portable Coleman two-burner propane stove
+- Folding table
+- Optional Portta-Potti add-on
+- Optional refrigerator add-on
+
+Latest Reviews:
+"Absolutely LOVED my experience with Karma Campervans! The van is so well designed and thought out. It was super user friendly and came with everything we needed for our trip to Banff. We had the best time driving this thing around!" - Hieu C., L.A. via Google
+
+"LOVE THIS COMPANY. The camper van was so nice. It reminded me of a very cool tiny home. Everything we needed and more was included. The whole set up was super easy and functional. Running water, a great coleman stove, an easy to access cooler, comfy bed, great linens, camping chairs, a fan, plenty of storage and a nice little fold up table. We felt like we were glamping." - Julie P., Ontario via Google
+
+"Karma Campervans —We loved our van and working with such a great group of people! Everything about this van was so well thought out and we had a blast enjoying #banff #jasper #parkscanada and #glaciernationalpark !! The van drives like a car and the back-up camera made maneuvering so easy! Fantastic storage, well thought out placement of goods, and equipped with everything to make camping fun! We cannot wait to rent again! While we LOVED the van, the guys that run this company are sincerely committed to ensuring you have a great experience! They were communicative, flexible, and just down right awesome!!! Thank you for an awesome 9 days" - Alexandra C., San Diego, via Facebook
+
+"Nous avons vécu 2 semaines formidables à bord de la van louée chez karma campervans! Spacieuse, bien décoré, fiable! Le service est exceptionnel avec Dave! J’ai juste hâte de revivre l’expérience! Destinations: banff, yoho et jasper!" Vero L., Montreal via Facebook', 2, 23900, 'Calgary', 'AB', 'T3N 1N8', '', 'CA', 'Ford', 'Transit 250', 2019, 22.00, '2019-04-10 08:05:55.250', '2019-11-27 07:22:29.620', 51.15, -113.98, 'https://res.cloudinary.com/outdoorsy/image/upload/v1554872873/p/rentals/115462/images/qnsbiznxh9hxttrlmwuq.jpg', 'Karma Campervans', 'https://res.cloudinary.com/outdoorsy/image/upload/v1522734856/p/users/245351/images/iju70ps32tf4zfsxc0re.jpg');
+INSERT INTO rentals
+(id, name, type, description, sleeps, price_per_day, home_city, home_state, home_zip, home_county, home_country, vehicle_make, vehicle_model, vehicle_year, vehicle_length, created, updated, lat, lng, primary_image_url, owner_name, owner_avatar_url)
+VALUES(119960, 'AWESOME 1977 Volkswagen Westfalia camper', 'camper-van', '
+Check out our instagram!: @vintagebusadventure
+
+Note: We are cool with instant booking but we need to know your trip before booking. Some destinations are prohibited such as Far deserts :) 
+
+Also before each departure we will spend some time with you to go through everything :). Laurent has been exclusively working on vw buses for 20 years so you should be ok!! :)
+
+You could not find a better place to rent your vw bus westfalia!. Indeed, you can check all the work Laurent is doing all year long on these beautiful time capsules on instagram at: @23KUSTOM.
+
+
+This said, This is a unique and fully loaded 1977 vw bus westfalia with all the gear you need. It sleeps 4 people total!. High quality canvas that opens up in every direction! The bus is really clean and very reliable. Maximum speed 60mph. With $60 worth of gas you can drive up to 250 miles. Our buses are fully inspected prior each departure.
+
+ -Solar panels
+- Stove
+- Icebox
+- Bed sheets
+- Blankets
+- Folding table
+- Chairs
+- Dishes ( plates, bowls...)
+- Silverware
+- Glasses
+- Cooking sets
+- Cooking utensils ( including can, wine, beer opener and much more!)
+- First aid kit
+- Dish soap
+- Trash bags
+- Dust pan
+- Toilet paper
+- Paper towels
+- Fire extinguisher
+- Camping lights
+- Coffee press machine
+- Flashlights
+
+
+
+We can also offer you:
+
+- Pillows: $5 each
+- Towels: $5 each
+- Sleeping bags: $15 each
+- Outdoor grill: $15
+- Bluetooth speaker: $15
+- Soft roof bag ( Extra storage out of the bus!!): $20
+
+PETS are allowed with a $100 non refundable.
+
+If any questions!, feel free to hit us up :) We will answer to you quickly! :)
+
+
+PEACE! Julie&amp;Laurent
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Keywords:
+
+volkswagen
+ vw
+ vw tiguan
+ vw bus
+ vw beetle
+ vw golf
+ vw jetta
+ volkswagen golf
+ vw van
+ vw passat
+ vw bus for sale
+ vw touareg
+ vw bug
+ vw camper van
+ volkswagen bus
+ bus transportation
+ vw scirocco
+ vw phaeton
+ vw california
+ new vw bus
+ vw corrado
+ vw polo
+ vw vanagon
+ vw microbus
+ vw amarok
+ vw westfalia
+ vw karmann ghia
+ vw cabriolet
+ new volkswagen bus
+ vw bus camper
+ vw touran
+ vw cabrio
+ vw fox
+ used vw beetle
+ volkswagen vento
+ vw caddy
+ vw transporter
+ vw sportwagen
+ vw vans
+ vw type 2
+ vw vr6
+ vw minibus
+ vw microbus for sale
+ vw syncro
+ vw kombi
+ vw beetle engine
+ vw sharan
+ vw direct
+ vw t6
+ vw volkswagen
+hotels
+ expedia
+ flights
+ cheap flights
+ travelocity
+ airline tickets
+ plane tickets
+ cheap airline tickets
+ cheap airfare
+ travel
+ vacation
+ one travel
+ krav maga
+ travelling
+ airlines
+ travel agency
+ airfare
+ cheap plane tickets
+ vacation packages
+ traverse city
+ time travel
+ travel channel
+ airtickets
+ fare
+ online travel agent
+ air fare
+ airline flights
+ travel advisor
+ travel agent
+ travel sites
+ last minute travel
+ airline
+ air flights
+ traces
+ packaging
+ trips
+ air plane tickets
+ travel and leisure
+ traveling or travelling
+ travel blog
+ travel websites
+ travel packages
+ cheap airline flights
+ travel inn
+ international flights
+ vacations
+ travel deals
+ discount flights
+ skip tracing
+ airfares', 4, 9900, 'Los Angeles', 'CA', '90023', 'Los Angeles', 'US', 'Volkswagen', 'Westfalia', 1977, 15.00, '2019-05-12 05:51:31.962', '2020-05-04 05:31:07.291', 34.02, -118.21, 'https://res.cloudinary.com/outdoorsy/image/upload/v1558048520/p/rentals/119960/images/sceobzuac0stwyrndi2z.jpg', 'vintagebusadventure piani', 'https://res.cloudinary.com/outdoorsy/image/upload/v1557633088/p/users/698982/images/lvmzt41qseycjthixrch.jpg');
+INSERT INTO rentals
+(id, name, type, description, sleeps, price_per_day, home_city, home_state, home_zip, home_county, home_country, vehicle_make, vehicle_model, vehicle_year, vehicle_length, created, updated, lat, lng, primary_image_url, owner_name, owner_avatar_url)
+VALUES(120853, 'Ford Transit Camper Van', 'camper-van', 'The Ford Transit camper is the perfect vehicle for the family who wants to be extra comfortable on the road and have ample sleeping and storage space. The front swivel chairs and extendable table works beautifully for a family of 4 to dine or play games inside the van. The wrap around awning extends easily for sun and rain protection. There is a slide out kitchen at the rear of the van for cooking meals and 21 gallons of fresh water on board for cooking and cleaning. There is a auxiliary battery for charging devices and for powering the 12v refrigerator. You have the option of plugging into shore power for full 120v access.
+
+When it’s time for bed, 2 people can comfortably sleep on the memory foam bed below, and 2 people can sleep under the comfortable canvas tent pop top above.  We include a down comforter with duvet, pillows, sheets and towels for 2 however you can add a second set of bedding for an additional fee.
+
+The kitchen is stowed completely under the bed and is accessed by sliding out the rear of the vehicle.  We include a roll up table, fold up chairs, 12v cooler, two burner gas stove and stocked kitchen ware that includes just about everything to cook a meal for 4.
+
+For more information and to see the other vehicles that we offer in our fleet visit roadtriporegon.com
+
+At Road Trip Oregon we take your vacation seriously.  Our fleet of 30 campervans are maintained in house by our mechanic, specializing in VW repair.  We give each vehicle a thorough mechanical inspection before every trip insuring your road trip to be hassle free.   We have been in business for 8 years, have had 1000''s of happy customers and our shop is located close to the Portland airport. ', 4, 20000, 'Portland', 'OR', '97220', '', 'US', 'Ford', 'Van', 2018, 19.00, '2019-05-17 17:04:02.212', '2020-07-21 02:38:09.786', 45.53, -122.58, 'https://res.cloudinary.com/outdoorsy/image/upload/v1558102819/p/rentals/120853/images/lmx0f2klrsdbmmuhflvm.jpg', 'Road Trip Oregon', 'https://res.cloudinary.com/outdoorsy/image/upload/v1508594847/p/users/178981/images/sgdndj0heoidobxgfqmr.png');
+INSERT INTO rentals
+(id, name, type, description, sleeps, price_per_day, home_city, home_state, home_zip, home_county, home_country, vehicle_make, vehicle_model, vehicle_year, vehicle_length, created, updated, lat, lng, primary_image_url, owner_name, owner_avatar_url)
+VALUES(122562, '4Runner TRD Pro - 1', 'camper-van', 'Our 4Runner TRD Pro provides everything needed in an exceptional Overland vehicle. More refined and lavish than our Tacoma or Tundra, this vehicle provides a dual battery system that allows for a fridge/freezer system and charging power for days.', 2, 19900, 'GLENWOOD SPRINGS', 'CO', '81601', '', 'US', 'Toyota', '4Runner', 2017, 16.00, '2019-05-29 01:31:33.672', '2020-07-18 19:26:49.778', 39.55, -107.33, 'https://res.cloudinary.com/outdoorsy/image/upload/v1572716112/p/rentals/122562/images/kzprabntk4n67lclikqf.jpg', 'Colorado Overlander', 'https://res.cloudinary.com/outdoorsy/image/upload/v1559421769/p/users/729525/images/pgm01bxahtcual9gtfz2.jpg');
+INSERT INTO rentals
+(id, name, type, description, sleeps, price_per_day, home_city, home_state, home_zip, home_county, home_country, vehicle_make, vehicle_model, vehicle_year, vehicle_length, created, updated, lat, lng, primary_image_url, owner_name, owner_avatar_url)
+VALUES(127213, '2007 toyota 4RUNNER', 'camper-van', 'Get $50 off on your first trip when sign up using this link: https://www.outdoorsy.com/invite/pmf6tl/renter
+And you don''t have to rent my camper.
+
+
+We provide through cleaning before and after each rental to ensure your and our safety.
+We follow social distancing rules, contactless handoff.
+
+
+4x4 Toyota 4RUNNER will take you on an epic adventure in Alaska. It seats 5 and sleeping 4. You can enjoy the cozy in the car or the view in the "penthouse". It easily fits any normal parking spots.
+', 4, 13500, 'Anchorage', 'AK', '99504', '', 'US', 'toyota', '4RUNNER', 2007, 16.00, '2019-06-21 23:19:07.361', '2020-07-06 12:58:03.245', 61.19, -149.73, 'https://res.cloudinary.com/outdoorsy/image/upload/v1561148804/p/rentals/127213/images/tlbmzttamvxtyedkj59e.jpg', 'Lu Lu', 'https://res.cloudinary.com/outdoorsy/image/upload/v1556063756/undefined/users/641895/images/loqvwhaesjiwsukbfsst.jpg');
+INSERT INTO rentals
+(id, name, type, description, sleeps, price_per_day, home_city, home_state, home_zip, home_county, home_country, vehicle_make, vehicle_model, vehicle_year, vehicle_length, created, updated, lat, lng, primary_image_url, owner_name, owner_avatar_url)
+VALUES(135075, 'Big Blue The Adventure Van', 'camper-van', 'Use "read more" drop down to see all details. Note: You must be 25 years old to rent this van.
+
+The Ford Transit van drives more like a car than a van. With lane assist warning, large mirrors and side windows, it makes driving down the highway a breeze. And with it''s in dash GPS you''ll be able to program in that perfect destination. The Bluetooth stereo will keep you hands free calling and the ability to play your favorite music. It''s smaller size makes it easy to maneuver through parking lots and finding parking that wouldn''t fit the average RV. And the backup camera with proximity sensors makes backing out of those tight spots and into the perfect camping spot a lot easier. ', 3, 13000, 'Phoenix', 'AZ', '85048', '', 'US', 'Ford', 'Transit', 2015, 20.00, '2019-08-05 23:31:41.263', '2020-06-10 16:19:40.769', 33.3, -112.06, 'https://res.cloudinary.com/outdoorsy/image/upload/v1565039202/p/rentals/135075/images/qzshxyzofqz6bawudfd2.jpg', 'AZ Adventure Vans', 'https://res.cloudinary.com/outdoorsy/image/upload/v1588976271/p/users/880980/images/d1bm3a5kamycegt72wwx.png');
+INSERT INTO rentals
+(id, name, type, description, sleeps, price_per_day, home_city, home_state, home_zip, home_county, home_country, vehicle_make, vehicle_model, vehicle_year, vehicle_length, created, updated, lat, lng, primary_image_url, owner_name, owner_avatar_url)
+VALUES(137341, 'The Getaway Van', 'camper-van', '
+The Getaway Van is exactly that, a wonderful and fun way to get away! The Getaway Van is used by our family for our camping adventures around the island and we want to share this experience with you!
+
+Explore the beautiful island of Oahu, mauka to makai, and never be far from your bed! This home on wheels will provide all the comforts you need for a exciting vacation on the go.
+
+The space
+The van is equipped with everything you need for a mobile camping trip.
+
+Vehicle Features:
+- Battery Powered A/C Cooler (Keeps you cool at night, just add ice!)
+- Solar Panel to charge devices
+- Sink (6 Gal. Water Tank)
+- Full sized bed (Memory Foam)
+
+In addition to this we have provided the following items at no additional charge to you!
+- Snorkel Gear
+- Surfboards
+- Beach Towels
+- Folding Table
+- Camp Chairs
+- Pop up tent (10''x10'')
+- Gas cook top
+- Cookware
+- Charcoal Grill
+- Cooler
+- Basic Toiletries (Toilet Paper/Paper towels/Sunscreen, Etc.)
+
+Other things to note:
+
+Please do not take the van off-roading or on 4WD-only roads as damage can occur. 
+
+Airport pickup and drop-off of the van can be arranged for an additional fee of $50 each way.  We will try to accommodate you as best we can! Airport runs are only made between 8am-8pm. Please add a note to your reservation if you wish to add this option. The Getaway Van''s home base is sunny Ewa Beach.
+
+Check-In and Check-Out times can be flexible, permitting there is not a back to back booking. If back to back booking occurs, check-out will be 11am and check-in will be 3pm. We will do our absolute best to accommodate your arrival and departure times. 
+
+***The Getaway Van must be returned with a full tank of gas upon check-out.  A $10 convenience fee will be charged in addition to the cost to fill the tank if returned below full.', 2, 12900, 'Ewa Beach', 'HI', '96706', '', 'US', 'Chevrolet', 'Other', 2002, 19.00, '2019-08-19 01:13:47.154', '2020-02-01 06:39:50.790', 21.32, -157.98, 'https://res.cloudinary.com/outdoorsy/image/upload/v1567092673/p/rentals/137341/images/ms68oj41vlzuehoohy7u.jpg', 'Scott &amp; Savannah Hensley', '');
+INSERT INTO rentals
+(id, name, type, description, sleeps, price_per_day, home_city, home_state, home_zip, home_county, home_country, vehicle_make, vehicle_model, vehicle_year, vehicle_length, created, updated, lat, lng, primary_image_url, owner_name, owner_avatar_url)
+VALUES(137450, '2013 Peugeot Expert SWB', 'camper-van', '🛏 Comfy double bed with memory foam mattress topper
+🍺 39L Fridge with small freezer compartment
+🍳 2 Ring gas hob
+🚰 Sink with 12L fresh water and waste water containers
+🍽 Pots, pans, plates and utensils
+📱 2 USB charging points and 1 12v socket
+🗄 A surprising amount of storage for a little van
+☀️ Roof mounted solar panels, perfect for wild camping
+🐕 Pet friendly
+All you need to bring is your bedding and towels.', 2, 9000, 'Cumbria', 'CMA', 'CA11 9TE', '', 'GB', 'Peugeot', 'Expert SWB', 2015, 4.80, '2019-08-19 16:16:06.676', '2020-01-12 16:32:36.837', 54.72, -2.88, 'https://res.cloudinary.com/outdoorsy/image/upload/v1566292990/p/rentals/137450/images/m1axdiiyampit2da6ufu.jpg', 'Dinky Campers', 'https://res.cloudinary.com/outdoorsy/image/upload/v1566220393/p/users/904476/images/teu4wiz2lhsnb0xzqiwb.jpg');
+INSERT INTO rentals
+(id, name, type, description, sleeps, price_per_day, home_city, home_state, home_zip, home_county, home_country, vehicle_make, vehicle_model, vehicle_year, vehicle_length, created, updated, lat, lng, primary_image_url, owner_name, owner_avatar_url)
+VALUES(138114, '2007 Dodge Sprinter 2500 170ext', 'camper-van', 'A converted 2007 Dodge Sprinter with extended body and extra bench seat for passengers, kids or car seats. High top roof provides enough room for a 6’2” adult to stand up and walk around. Bed and mattress is larger than a queen and plenty of storage underneath. Solar panel and battery bank provide plenty of power for a weekend or extended trip. Espar heater and spray foam insulated walls keep the van warm even in single digit temperatures. 
+
+Plenty of space for 2 adults plus up to two kids. 
+
+Owners are a family of four with a dog that use the van for camping all over the mountains of Colorado. Wonderful way to easily camp with young kids.', 2, 14900, 'Denver', 'CO', '80238', '', 'US', 'Dodge', 'Sprinter 2500 170ext', 2007, 22.00, '2019-08-24 01:19:34.759', '2020-06-15 22:14:55.756', 39.8, -104.89, 'https://res.cloudinary.com/outdoorsy/image/upload/v1566599922/p/rentals/138114/images/ab2mosnnlfudkxhqgqcy.jpg', 'Kevin Pula', 'https://lh3.googleusercontent.com/a-/AAuE7mBtUo3MYl6qsb1PAbI786L1fkHNVK7W4GfFHLlwP-Y');
+INSERT INTO rentals
+(id, name, type, description, sleeps, price_per_day, home_city, home_state, home_zip, home_county, home_country, vehicle_make, vehicle_model, vehicle_year, vehicle_length, created, updated, lat, lng, primary_image_url, owner_name, owner_avatar_url)
+VALUES(143740, '2002 Chevrolet Van Conversion', 'camper-van', 'Our van is a converted Chevy Express 3500. It used to be a 15 passenger van that I completely gutted and made into a perfect weekend escape vehicle.  It has a mini-fridge, sink, multiple a/c outlets and USB plugs, a swivel passenger seat, plenty of storage and a bed/dining area in the back that''s about a queen side bed.
+I even have an optional 2nd-row seat for up to 4 seatbelts.
+Compared to a larger vehicle this van gets fantastic gas mileage.
+Kitchen supplies, chairs, pillows and blankets, inflatable couch, hammock, this van has it all!
+This is a perfect road trip vehicle. ', 2, 9900, 'San Diego', 'CA', '92107', '', 'US', 'Chevrolet', 'Express', 2002, 21.00, '2019-09-29 04:08:12.675', '2020-07-13 17:04:11.211', 32.73, -117.24, 'https://res.cloudinary.com/outdoorsy/image/upload/v1569722222/p/rentals/143740/images/ooxoce0zrlycj5esm3jh.png', 'Matt Fistonich', '');
+INSERT INTO rentals
+(id, name, type, description, sleeps, price_per_day, home_city, home_state, home_zip, home_county, home_country, vehicle_make, vehicle_model, vehicle_year, vehicle_length, created, updated, lat, lng, primary_image_url, owner_name, owner_avatar_url)
+VALUES(145653, '2017 Ford Transit', 'camper-van', 'This 15 seater passenger van is perfect for your travel needs!  Spacious and comfortable, you''ll have no problems driving with a large group.  We''re also willing to remove some seats for you if you''d like to increase your cargo space.', 1, 10500, 'Edmonton', 'AB', 'T5T 6V2', '', 'CA', 'Ford', 'Transit', 2017, 5.00, '2019-10-18 21:18:02.078', '2020-07-21 18:10:50.848', 53.52, -113.68, 'https://res.cloudinary.com/outdoorsy/image/upload/v1571422978/p/rentals/145653/images/cy74icmc2qj0oo6zkgqe.jpg', 'Riza Calinisan', 'https://res.cloudinary.com/outdoorsy/image/upload/v1595340124/p/users/984877/images/pduy7cq2jg9zgggvbxl8.jpg');
+INSERT INTO rentals
+(id, name, type, description, sleeps, price_per_day, home_city, home_state, home_zip, home_county, home_country, vehicle_make, vehicle_model, vehicle_year, vehicle_length, created, updated, lat, lng, primary_image_url, owner_name, owner_avatar_url)
+VALUES(145954, 'TiKi Van  Extended custom camper', 'camper-van', 'Custom camper Hawaiian style comes with all the toys for great adventure. 200 watts of solar power for refrigerator fans and blender. Charge everything for camping in comfort in the Big Island of Hawaii. Tiki camper lives in Keaau where there is a base camp with hot showers and Wi-Fi. A great place to see all the sites. Tiki Van has many included things for your comfort and enjoyment.  included in base price is 2 bath towels, 2 beach towels, toiletries, 7 gallons spring water for drinking, everything needed for camp cooking including spices , propane bbq, camp table and chairs, ez up shade canopy, 2 boogie boards, 2 hammocks, clean linens and pillows. bluetooth speaker, solar shower, security systems, french press coffee maker, blender, refrigerator and so much more, Tiki Van is a great way to see the Big island of Hawaii. Wake up to a new beautiful scene every morning.  there are many great campgrounds in Hawaii and its also legal to camp overnight at the shoreline if you are engaged in fishing!! We have fishing gear as well.
+    
+
+ ', 3, 12000, 'Keaau', 'HI', '96749', '', 'US', 'Ford', 'Econolline 250s', 2003, 19.00, '2019-10-22 11:15:23.795', '2020-02-27 09:34:55.798', 19.57, -155.01, 'https://res.cloudinary.com/outdoorsy/image/upload/v1571732982/p/rentals/145954/images/gj4muh11n0rbxi8y3b47.jpg', 'Jonas Molloy', 'https://graph.facebook.com/10211776098356544/picture?width=300&amp;height=300');
+INSERT INTO rentals
+(id, name, type, description, sleeps, price_per_day, home_city, home_state, home_zip, home_county, home_country, vehicle_make, vehicle_model, vehicle_year, vehicle_length, created, updated, lat, lng, primary_image_url, owner_name, owner_avatar_url)
+VALUES(146330, '2013 Toyota Hiace Campervan. 5 Seater Automatic. Immaculate Condition..', 'camper-van', '
+Our 2013, automatic Hi-Top SLWB Campervan offers a convenient  and comfortable way to travel for up to 5 people, with 5x seat-belts.
+It can easily sleep 4 adults or 2 adults and 3 children, all beds inside and off the ground.
+It accommodates tall people.
+
+Our camper comes fully equipped with everything you need to travel, just bring clothes and food/drink.
+Bedding can be provided, if required (optional extra).
+
+Roll out shade/awning, attached to side of vehicle
+Engel 115L fridge
+2 burner gas stove
+Fully equipped kitchen - crockery, cutlery, pots/pans
+Kitchen sink with running water from the 65L water tank
+Fold out table. 4x fold out camping chairs (optional extra)
+240V, 12V power sockets
+Deep cycle battery
+Rear view camera
+A/C in cabin
+2x Anchor points available for child restraints
+
+House Rules
+✘No smoking
+Pets allowed
+Family friendly
+
+Nationwide comprehensive vehicle insurance is included in the price.
+
+Cover
+Accidental damage
+
+Bond
+The security bond for this vehicle is $1,500. The bond will be refunded after your trip ends and it needs to be authorized at least 2 days before you pick up the vehicle.
+
+Pickup location - Ardross, WA
+Alternative locations can be arranged with prior notice.', 5, 11000, 'Mount Pleasant', 'WA', '6153', '', 'AU', 'Toyota', 'Hiace Campervan. 5 Seater Automatic Great Condition..', 2013, 6.00, '2019-10-26 16:08:52.529', '2020-03-19 22:48:45.422', -32.02, 115.84, 'https://res.cloudinary.com/outdoorsy/image/upload/v1572098257/p/rentals/146330/images/p4yes9tepvixnlcz4ick.jpg', 'Susan Whittome', '');
+INSERT INTO rentals
+(id, name, type, description, sleeps, price_per_day, home_city, home_state, home_zip, home_county, home_country, vehicle_make, vehicle_model, vehicle_year, vehicle_length, created, updated, lat, lng, primary_image_url, owner_name, owner_avatar_url)
+VALUES(153401, 'Coya | Van-gelina Jolie', 'camper-van', 'Competing with Jennifer Vaniston to get your rental.
+
+Experience Van Life with unparalleled creature comforts and amenities! Our vehicles are specifically designed to meet the needs of the modern traveler. We provide the comfort and convenience of a luxury hotel, with the freedom and maneuverability of a camper van.
+
+Our team of professionals ensures a level of quality control that is unmatched on Outdoorsy. Between guests, every vehicle is meticulously cleaned, restocked and function tested. Vehicle surfaces and linens are completely disinfected before every rental – guaranteeing you a clean and comfy place to rest your head.
+
+Stay as close to the trail as possible, or as far from the noise as necessary.
+
+Hotel-Quality Amenities:
+
+Bathroom/Shower – Our Vans are equipped with a luxurious heated shower, with bamboo floors and flushable toilet.
+
+Sleeping – Sleep Soundly on a hotel quality Camper Queen 8” memory foam mattress, which is the same width as a queen but the length of a Full size mattress.
+
+Wifi – An un-throttled HTC 5G Hotspot keeps our vehicles connected on the go.
+Climate Control – No need to bundle up, a forced air heating system with thermostat allows you to set your ideal temperature.
+
+Storage – 2 interior cabinets are sized perfectly to stow carry on luggage. A wardrobe for hanging clothes, with a small safe complete the closet area. Two additional drawers round out the interior storage. A large gear garage in the rear of the vehicle is available to store large suitcases, skis, snowboards or other adventure gear.
+
+Kitchen – The kitchen includes a coffee maker and 30-liter Dometic drawer refrigerator. A 2 burner stove can be rented as an “add-on” if you''d like to cook.
+
+Living Space – The passenger seat swivels, and a hidden bench seat deploys from under the sink to make seating and a dinette table for two.
+
+Follow us: stay_coya on Instagram and StayCoya on Facebook. #StayCoya', 2, 20000, 'Seattle', 'WA', '98116', '', 'US', 'Ford', 'Transit', 2019, 20.00, '2020-01-24 02:18:50.207', '2020-06-21 03:40:37.418', 47.56, -122.39, 'https://res.cloudinary.com/outdoorsy/image/upload/v1582091293/p/rentals/153401/images/kaqt2b6n6sm1xnmvbi5w.jpg', 'Hotel  VanGo', 'https://res.cloudinary.com/outdoorsy/image/upload/v1571682804/p/users/855478/images/prlt94sctrlclfstf4b4.jpg');
+INSERT INTO rentals
+(id, name, type, description, sleeps, price_per_day, home_city, home_state, home_zip, home_county, home_country, vehicle_make, vehicle_model, vehicle_year, vehicle_length, created, updated, lat, lng, primary_image_url, owner_name, owner_avatar_url)
+VALUES(156152, 'sCAMPer X', 'camper-van', '', 4, 17500, 'Atlanta', 'GA', '30310', '', 'US', 'Ram', 'Promaster', 2020, 19.00, '2020-02-18 19:14:54.048', '2020-07-16 21:38:18.586', 33.73, -84.41, 'https://res.cloudinary.com/outdoorsy/image/upload/v1589910541/p/rentals/156152/images/jvyvtqoeljadoizjjzag.jpg', 'David Clapper', 'https://res.cloudinary.com/outdoorsy/image/upload/v1550186377/p/users/96789/images/pom8nw20hygegoz7d4nr.png');
+INSERT INTO rentals
+(id, name, type, description, sleeps, price_per_day, home_city, home_state, home_zip, home_county, home_country, vehicle_make, vehicle_model, vehicle_year, vehicle_length, created, updated, lat, lng, primary_image_url, owner_name, owner_avatar_url)
+VALUES(162781, '2015 Dodge Sprinter Van', 'camper-van', 'This cozy camper van has everything you need to explore the beautiful Rocky Mountains of Colorado! You will find some complimentary treats and beverages in the fridge and (separate) freezer.
+
+This van was professionally built out. I added an extension onto the bed for tall people. The roof is high enough for someone 6’2” to stand straight up. There are two fans that circulates the fresh mountain breeze. The heater system runs off of the fuel tank (Gasoline) and has a thermostat to control it. There is a 3,000 watt inverter and an electric stove top. No propane needed in this Baby!
+There is also a waterless toilet with vacuum sealed bags. First cartridge is included in the rental which has 15-17 vacuum sealed flushes. Each additional cartridge is $30.
+
+There is a ceiling mounted projector, 57" pull down screen, outdoor theater (queen sized sheet with magnets that attach to the side of the van) and a DVD player with a huge selection of dvds!', 2, 17000, 'Silverthorne', 'CO', '80498', '', 'US', 'Dodge', 'Sprinter Van', 2015, 20.00, '2020-05-04 01:50:06.530', '2020-06-16 20:09:06.555', 39.62, -106.09, 'https://res.cloudinary.com/outdoorsy/image/upload/v1588550855/p/rentals/162781/images/az0xp8wbdto4pjzlkyh3.jpg', 'Charity Ferry', 'https://res.cloudinary.com/outdoorsy/image/upload/v1589344925/p/users/1173457/images/ak3fioewakhseyoatbri.jpg');
+INSERT INTO rentals
+(id, name, type, description, sleeps, price_per_day, home_city, home_state, home_zip, home_county, home_country, vehicle_make, vehicle_model, vehicle_year, vehicle_length, created, updated, lat, lng, primary_image_url, owner_name, owner_avatar_url)
+VALUES(164961, 'The New Adventures of Pearl - 2014 Nissan NV2500 High Top', 'camper-van', 'Welcome to your very own Van Life adventure! Pearl is a 2014 Nissan NV 2500 V8 high top van. She traveled to 49 states and 6 Canadian Provinces over 3 years of full-time van living with her owner, Cyndi. Pearl even won the "Netflix and Chill" award (aka the coziest van ever!) at the 5Point Film Festival''s Van Life Rally in Carbondale, Colorado. And now she’s so excited to have new adventure buddies to travel around with (aka YOU!). We hope you’re excited, too!
+
+Pearl is equipped with reclaimed wood paneling &amp; cozy cottage finishes, 49”x 74”memory foam mattress (a little smaller than a full sized mattress - sleeps two cozily), refrigerator, optional in-cabin composting toilet (free if returned clean), hand pump sink with 5gal fresh &amp; grey water tanks, electric induction cooktop, 100ah lithium ion house battery that''s charged via solar panel and alternator, Pure Sine inverter with AC power, Fantastic vent, fire safe, large under-bed garage for storing camp gear and toys, optional 4-bike rack, cell phone extender, back-up camera, BF Goodrich T/A KO2 All-Terrain tires for easy off-roading, along with all the furnishings you need for a fun and comfortable camping or van adventure!
+
+Pick up is 2pm. Drop off is 12pm. Early pick up and/or late drop off upon request (if available) for $50 fee each way. 
+
+Cleaning fees waived if Pearl is returned in the same clean condition as at pick up. 
+
+
+
+', 2, 18900, 'Denver', 'CO', '80222', 'Denver', 'US', 'Nissan', 'NV2500', 2014, 20.00, '2020-05-26 00:42:11.817', '2020-07-20 18:39:34.586', 39.67, -104.92, 'https://res.cloudinary.com/outdoorsy/image/upload/v1590500837/undefined/rentals/164961/images/t3nkxdl0ua8g6gp1idcm.jpg', 'Cyndi Ortiz', 'https://res.cloudinary.com/outdoorsy/image/upload/v1590448737/p/users/1230992/images/y94r3x5karecpwnwsrxk.jpg');		
+		</sql>	
+	</changeSet>	
+	<changeSet id="3" author="admin">
+		<sql>
+INSERT INTO rental_images(id,rental_id,url)
+VALUES
+(43517,4447,E'https://res.cloudinary.com/outdoorsy/image/upload/v1468110763/p/rentals/4447/images/lzwiwloy5k8xwiena0vv.jpg'),
+(351676,4447,E'https://res.cloudinary.com/outdoorsy/image/upload/v1528586448/p/rentals/4447/images/axejaqgxiu3bwo6lyykk.jpg'),
+(351678,4447,E'https://res.cloudinary.com/outdoorsy/image/upload/v1528586459/p/rentals/4447/images/o3jzf3maq28v69v4kj7l.jpg'),
+(43515,4447,E'https://res.cloudinary.com/outdoorsy/image/upload/v1468110743/p/rentals/4447/images/dufzhwdj5fmuo3zneycl.jpg'),
+(43518,4447,E'https://res.cloudinary.com/outdoorsy/image/upload/v1468110916/p/rentals/4447/images/fezcmivukn1rxdrba2aa.jpg'),
+(351677,4447,E'https://res.cloudinary.com/outdoorsy/image/upload/v1528586451/p/rentals/4447/images/yd7txtw4hnkjvklg8edg.jpg'),
+(43516,4447,E'https://res.cloudinary.com/outdoorsy/image/upload/v1468110756/p/rentals/4447/images/f9mteie0fr0ln1pmke0h.jpg'),
+(351679,4447,E'https://res.cloudinary.com/outdoorsy/image/upload/v1528586460/p/rentals/4447/images/zdjbv45k7ijarldx2ahf.jpg'),
+(110029,11368,E'https://res.cloudinary.com/outdoorsy/image/upload/v1498568023/p/rentals/11368/images/xxvx4x1qtl8degolnker.jpg'),
+(110028,11368,E'https://res.cloudinary.com/outdoorsy/image/upload/v1498568017/p/rentals/11368/images/dzkl6qaoxyfl8sas2ssh.jpg'),
+(110009,11368,E'https://res.cloudinary.com/outdoorsy/image/upload/v1498567966/p/rentals/11368/images/dwjdlvnaoqi0jdeomhwn.jpg'),
+(110011,11368,E'https://res.cloudinary.com/outdoorsy/image/upload/v1498567969/p/rentals/11368/images/y1jy5v6xnoghqkliehkt.jpg'),
+(110024,11368,E'https://res.cloudinary.com/outdoorsy/image/upload/v1498568012/p/rentals/11368/images/euurxfi5d13ugitsotma.jpg'),
+(110005,11368,E'https://res.cloudinary.com/outdoorsy/image/upload/v1498567950/p/rentals/11368/images/ka3ccmb4bosgxwbr7hdi.jpg'),
+(110031,11368,E'https://res.cloudinary.com/outdoorsy/image/upload/v1498568737/p/rentals/11368/images/wevxcvl4zlgj7hirf7bw.jpg'),
+(110019,11368,E'https://res.cloudinary.com/outdoorsy/image/upload/v1498567986/p/rentals/11368/images/ead2lv2ummhkopis9p1u.jpg'),
+(110008,11368,E'https://res.cloudinary.com/outdoorsy/image/upload/v1498567958/p/rentals/11368/images/up6qtodeybncuj8ohny8.jpg'),
+(110012,11368,E'https://res.cloudinary.com/outdoorsy/image/upload/v1498567971/p/rentals/11368/images/docsdv6tkdi83ggnojkg.jpg'),
+(110015,11368,E'https://res.cloudinary.com/outdoorsy/image/upload/v1498567975/p/rentals/11368/images/nl4wslsuyxanriwy5tpw.jpg'),
+(110020,11368,E'https://res.cloudinary.com/outdoorsy/image/upload/v1498567993/p/rentals/11368/images/khqee1shjvi2r6q15y67.jpg'),
+(110014,11368,E'https://res.cloudinary.com/outdoorsy/image/upload/v1498567975/p/rentals/11368/images/lqvwgkun4df8bcvbpwlk.jpg'),
+(110007,11368,E'https://res.cloudinary.com/outdoorsy/image/upload/v1498567955/p/rentals/11368/images/mong7prhr9b35mzpxt2f.jpg'),
+(110032,11368,E'https://res.cloudinary.com/outdoorsy/image/upload/v1498568745/p/rentals/11368/images/t2zee2hvp6baubvpwatl.jpg'),
+(110030,11368,E'https://res.cloudinary.com/outdoorsy/image/upload/v1498568017/p/rentals/11368/images/gmtye6p2eq61v0g7f7e7.jpg'),
+(142299,21399,E'https://res.cloudinary.com/outdoorsy/image/upload/v1504394785/p/rentals/21399/images/fjr0flqlsvo49rpqdjdh.jpg'),
+(142300,21399,E'https://res.cloudinary.com/outdoorsy/image/upload/v1504394820/p/rentals/21399/images/o9vrxigkiivopasszoyh.jpg'),
+(142301,21399,E'https://res.cloudinary.com/outdoorsy/image/upload/v1504394839/p/rentals/21399/images/fdyey8sqxnl8kipz27nw.jpg'),
+(142302,21399,E'https://res.cloudinary.com/outdoorsy/image/upload/v1504394913/p/rentals/21399/images/rlzsiwrvjk35vytooy8n.jpg'),
+(142314,21399,E'https://res.cloudinary.com/outdoorsy/image/upload/v1504395049/p/rentals/21399/images/fjwblqnwb0viondsvmnk.jpg'),
+(142315,21399,E'https://res.cloudinary.com/outdoorsy/image/upload/v1504395078/p/rentals/21399/images/encqerbjyicz3swujnhq.jpg'),
+(142316,21399,E'https://res.cloudinary.com/outdoorsy/image/upload/v1504395252/p/rentals/21399/images/tf9upxbkd306pakckrtc.jpg'),
+(142318,21399,E'https://res.cloudinary.com/outdoorsy/image/upload/v1504395418/p/rentals/21399/images/dwovupulrilr7bblrgvv.jpg'),
+(142319,21399,E'https://res.cloudinary.com/outdoorsy/image/upload/v1504395480/p/rentals/21399/images/ymfuko5kqj2zo60wrqy7.jpg'),
+(142320,21399,E'https://res.cloudinary.com/outdoorsy/image/upload/v1504395813/p/rentals/21399/images/nxtwdubpapgpmuc65pd1.jpg'),
+(273158,21399,E'https://res.cloudinary.com/outdoorsy/image/upload/v1525028942/p/rentals/21399/images/bjnmif67i9vcwjqhnrtz.jpg'),
+(273159,21399,E'https://res.cloudinary.com/outdoorsy/image/upload/v1525028943/p/rentals/21399/images/zowzdyzbvvtgfms8t1kx.jpg'),
+(273175,21399,E'https://res.cloudinary.com/outdoorsy/image/upload/v1525029577/p/rentals/21399/images/z9evkzjndguzikw9sggd.jpg'),
+(273163,21399,E'https://res.cloudinary.com/outdoorsy/image/upload/v1525028946/p/rentals/21399/images/wzsaqvfkh4mxldujfjh8.jpg'),
+(273168,21399,E'https://res.cloudinary.com/outdoorsy/image/upload/v1525029177/p/rentals/21399/images/vhzckq4tlhv4zqpuengm.jpg'),
+(273169,21399,E'https://res.cloudinary.com/outdoorsy/image/upload/v1525029178/p/rentals/21399/images/nqckemjb3y1xhlse6ecs.jpg'),
+(273170,21399,E'https://res.cloudinary.com/outdoorsy/image/upload/v1525029179/p/rentals/21399/images/zasjzkaolt1qji727tdt.jpg'),
+(273171,21399,E'https://res.cloudinary.com/outdoorsy/image/upload/v1525029179/p/rentals/21399/images/m8vlawiope0rxstziyde.jpg'),
+(273176,21399,E'https://res.cloudinary.com/outdoorsy/image/upload/v1525029578/p/rentals/21399/images/pnvzhlopvknjssh7cym7.jpg'),
+(273173,21399,E'https://res.cloudinary.com/outdoorsy/image/upload/v1525029180/p/rentals/21399/images/e5jglp3imxjom72zm2u8.jpg'),
+(273174,21399,E'https://res.cloudinary.com/outdoorsy/image/upload/v1525029574/p/rentals/21399/images/sq9oxhfjx1bqcsoxl7sv.jpg'),
+(273172,21399,E'https://res.cloudinary.com/outdoorsy/image/upload/v1525029180/p/rentals/21399/images/upndhvsffcxp22w2de69.jpg'),
+(273162,21399,E'https://res.cloudinary.com/outdoorsy/image/upload/v1525028946/p/rentals/21399/images/it77svqoagr3rewwqgud.jpg'),
+(142298,21399,E'https://res.cloudinary.com/outdoorsy/image/upload/v1504394777/p/rentals/21399/images/uenwf9b4egq0araumm12.jpg'),
+(142303,21399,E'https://res.cloudinary.com/outdoorsy/image/upload/v1504394933/p/rentals/21399/images/azejagn9u2f8xcoefneb.jpg'),
+(273160,21399,E'https://res.cloudinary.com/outdoorsy/image/upload/v1525028944/p/rentals/21399/images/ymrcf6sucregwjvberso.jpg'),
+(273161,21399,E'https://res.cloudinary.com/outdoorsy/image/upload/v1525028943/p/rentals/21399/images/a7eyvahxcs5ippttjfqf.jpg'),
+(344023,25403,E'https://res.cloudinary.com/outdoorsy/image/upload/v1528251974/p/rentals/25403/images/xvhi5qivkkchgjaanxmp.jpg'),
+(344021,25403,E'https://res.cloudinary.com/outdoorsy/image/upload/v1528251954/p/rentals/25403/images/zfgcxlg42vkzkgmfpcc6.jpg'),
+(344026,25403,E'https://res.cloudinary.com/outdoorsy/image/upload/v1528252132/p/rentals/25403/images/wpnwyzvwbzklrod2keyi.jpg'),
+(344025,25403,E'https://res.cloudinary.com/outdoorsy/image/upload/v1528251976/p/rentals/25403/images/le6i0gkyvbdqnkypflqa.jpg'),
+(162467,25403,E'https://res.cloudinary.com/outdoorsy/image/upload/v1508688886/p/rentals/25403/images/jkqxknddnuq6fvmyatke.jpg'),
+(847508,25403,E'https://res.cloudinary.com/outdoorsy/image/upload/v1548087538/p/rentals/25403/images/rqcgaewr7gfuhuvdqtyv.jpg'),
+(420736,40129,E'https://res.cloudinary.com/outdoorsy/image/upload/v1530877993/p/rentals/40129/images/nkbxflltobvojpd8kijp.jpg'),
+(420741,40129,E'https://res.cloudinary.com/outdoorsy/image/upload/v1530878007/p/rentals/40129/images/umputoruw0inksm4juhv.jpg'),
+(231314,40129,E'https://res.cloudinary.com/outdoorsy/image/upload/v1521261348/p/rentals/40129/images/wn0tx6meifqtrnwjmeoq.jpg'),
+(231316,40129,E'https://res.cloudinary.com/outdoorsy/image/upload/v1521261361/p/rentals/40129/images/ey7vrkwk0g2wirzcurpk.jpg'),
+(231317,40129,E'https://res.cloudinary.com/outdoorsy/image/upload/v1521261362/p/rentals/40129/images/paqi6azy0qhikxpewtom.jpg'),
+(420733,40129,E'https://res.cloudinary.com/outdoorsy/image/upload/v1530877991/p/rentals/40129/images/ydmsuszt8e2zt4nvtxeh.jpg'),
+(420734,40129,E'https://res.cloudinary.com/outdoorsy/image/upload/v1530877992/p/rentals/40129/images/nhseushunt9czlzvsory.jpg'),
+(420735,40129,E'https://res.cloudinary.com/outdoorsy/image/upload/v1530877992/p/rentals/40129/images/bzvciinbczpv123f5j9c.jpg'),
+(873436,40129,E'https://res.cloudinary.com/outdoorsy/image/upload/v1550909320/undefined/rentals/40129/images/jizlqliumzdf5htofle8.jpg'),
+(420744,40129,E'https://res.cloudinary.com/outdoorsy/image/upload/v1530878016/p/rentals/40129/images/qj7lfutrfhfd06sw7nyb.jpg'),
+(420743,40129,E'https://res.cloudinary.com/outdoorsy/image/upload/v1530878015/p/rentals/40129/images/ucyphnvmvwvhv6mteepb.jpg'),
+(420742,40129,E'https://res.cloudinary.com/outdoorsy/image/upload/v1530878011/p/rentals/40129/images/v1rcnly3hzsoqcsveuxv.jpg'),
+(420738,40129,E'https://res.cloudinary.com/outdoorsy/image/upload/v1530878004/p/rentals/40129/images/dukprftxavmhpucqj0vh.jpg'),
+(420737,40129,E'https://res.cloudinary.com/outdoorsy/image/upload/v1530877997/p/rentals/40129/images/rbr2exrot86uxc9h4txq.jpg'),
+(231315,40129,E'https://res.cloudinary.com/outdoorsy/image/upload/v1521261348/p/rentals/40129/images/h9rq02hkbkomzg4zzxg1.jpg'),
+(420740,40129,E'https://res.cloudinary.com/outdoorsy/image/upload/v1530878007/p/rentals/40129/images/j063ns3ooemqujsw4rgs.jpg'),
+(255826,46190,E'https://res.cloudinary.com/outdoorsy/image/upload/v1523649590/p/rentals/46190/images/elinlzv6fpnrktik4wqh.jpg'),
+(255843,46190,E'https://res.cloudinary.com/outdoorsy/image/upload/v1523649610/p/rentals/46190/images/y3nzfg9aub2gkdmyaqxv.jpg'),
+(255840,46190,E'https://res.cloudinary.com/outdoorsy/image/upload/v1523649608/p/rentals/46190/images/bqnwnssy4miipy7zgciz.jpg'),
+(255839,46190,E'https://res.cloudinary.com/outdoorsy/image/upload/v1523649607/p/rentals/46190/images/sgvapboahui3lz0sfmao.jpg'),
+(255836,46190,E'https://res.cloudinary.com/outdoorsy/image/upload/v1523649604/p/rentals/46190/images/vnjtm8a6cj6z2wzch0uc.jpg'),
+(255835,46190,E'https://res.cloudinary.com/outdoorsy/image/upload/v1523649601/p/rentals/46190/images/oosiknjyedfbkkdza1pv.jpg'),
+(255833,46190,E'https://res.cloudinary.com/outdoorsy/image/upload/v1523649600/p/rentals/46190/images/osstpb9cvj3juhe9aqug.jpg'),
+(255828,46190,E'https://res.cloudinary.com/outdoorsy/image/upload/v1523649594/p/rentals/46190/images/pwwk3jhdlot8oibrwjl0.jpg'),
+(255832,46190,E'https://res.cloudinary.com/outdoorsy/image/upload/v1523649600/p/rentals/46190/images/yxotn6nu6oymdgwoz0g1.jpg'),
+(255837,46190,E'https://res.cloudinary.com/outdoorsy/image/upload/v1523649605/p/rentals/46190/images/bat1d2dyhalczf0zh7pp.jpg'),
+(255827,46190,E'https://res.cloudinary.com/outdoorsy/image/upload/v1523649593/p/rentals/46190/images/hsxmqihnvtf59jqbjizd.jpg'),
+(255829,46190,E'https://res.cloudinary.com/outdoorsy/image/upload/v1523649593/p/rentals/46190/images/nzkwhsvsjhgbw7mlcjn2.jpg'),
+(255842,46190,E'https://res.cloudinary.com/outdoorsy/image/upload/v1523649610/p/rentals/46190/images/guw3xjcx1bdawscutlub.jpg'),
+(255838,46190,E'https://res.cloudinary.com/outdoorsy/image/upload/v1523649606/p/rentals/46190/images/yunxxbebzbe4kcv1r6c1.jpg'),
+(255825,46190,E'https://res.cloudinary.com/outdoorsy/image/upload/v1523649528/p/rentals/46190/images/qrkn0nftxdnm3nvhh4wp.jpg'),
+(255830,46190,E'https://res.cloudinary.com/outdoorsy/image/upload/v1523649598/p/rentals/46190/images/tam9zuqjb0nc9ymgxskp.jpg'),
+(255831,46190,E'https://res.cloudinary.com/outdoorsy/image/upload/v1523649599/p/rentals/46190/images/lekssqnk1iopn5ji9ncs.jpg'),
+(255834,46190,E'https://res.cloudinary.com/outdoorsy/image/upload/v1523649601/p/rentals/46190/images/ohn6lrcpanamgmhdu6td.jpg'),
+(299514,52210,E'https://res.cloudinary.com/outdoorsy/image/upload/v1526614056/p/rentals/52210/images/nou2lx0h0dsjzbqeotuf.jpg'),
+(299541,52210,E'https://res.cloudinary.com/outdoorsy/image/upload/v1526616212/p/rentals/52210/images/semnpeavagjgfffrqfdv.jpg'),
+(299533,52210,E'https://res.cloudinary.com/outdoorsy/image/upload/v1526616098/p/rentals/52210/images/oun0udddf5egcmsbhozg.jpg'),
+(299531,52210,E'https://res.cloudinary.com/outdoorsy/image/upload/v1526615976/p/rentals/52210/images/bowgidoid8vgtcsy9p65.jpg'),
+(907326,52210,E'https://res.cloudinary.com/outdoorsy/image/upload/v1553971089/undefined/rentals/52210/images/r6hrvxlxpnjjy6tbagga.jpg'),
+(343162,52210,E'https://res.cloudinary.com/outdoorsy/image/upload/v1528231990/p/rentals/52210/images/x6wir4ik3kg6l0a8hqj6.jpg'),
+(939682,52210,E'https://res.cloudinary.com/outdoorsy/image/upload/v1556579424/undefined/rentals/52210/images/uixhorbzswtso4rz3yna.jpg'),
+(939611,52210,E'https://res.cloudinary.com/outdoorsy/image/upload/v1556572927/undefined/rentals/52210/images/j2tqqoikjz4fiyoi4reh.jpg'),
+(343161,52210,E'https://res.cloudinary.com/outdoorsy/image/upload/v1528231980/p/rentals/52210/images/cjmjjr9krcxsqdzr1u6b.jpg'),
+(774544,52210,E'https://res.cloudinary.com/outdoorsy/image/upload/v1538870599/undefined/rentals/52210/images/scgm0w9z0jwfoipet3i7.jpg'),
+(299532,52210,E'https://res.cloudinary.com/outdoorsy/image/upload/v1526616009/p/rentals/52210/images/y4ttdmxtl6tte7svpejv.jpg'),
+(765987,82458,E'https://res.cloudinary.com/outdoorsy/image/upload/v1538027810/p/rentals/82458/images/bphrohl2r4wxc8wg3v11.jpg'),
+(765989,82458,E'https://res.cloudinary.com/outdoorsy/image/upload/v1538027812/p/rentals/82458/images/quh641awgxgche2ijjfh.jpg'),
+(765990,82458,E'https://res.cloudinary.com/outdoorsy/image/upload/v1538027813/p/rentals/82458/images/jcdaitzjp5akm3kzy8ya.jpg'),
+(765992,82458,E'https://res.cloudinary.com/outdoorsy/image/upload/v1538027816/p/rentals/82458/images/brlf1h00uwaawyguoesl.jpg'),
+(765993,82458,E'https://res.cloudinary.com/outdoorsy/image/upload/v1538027817/p/rentals/82458/images/gkpddc5htqfz5zgtjglu.jpg'),
+(765994,82458,E'https://res.cloudinary.com/outdoorsy/image/upload/v1538027818/p/rentals/82458/images/no7anqmwbosco7rkzxfr.jpg'),
+(765995,82458,E'https://res.cloudinary.com/outdoorsy/image/upload/v1538027819/p/rentals/82458/images/akzasffiqlyxlic8tidv.jpg'),
+(765996,82458,E'https://res.cloudinary.com/outdoorsy/image/upload/v1538027820/p/rentals/82458/images/bvt6ejrpbewidmcz2lzn.jpg'),
+(765997,82458,E'https://res.cloudinary.com/outdoorsy/image/upload/v1538027821/p/rentals/82458/images/p9ru1usslwledm89ebu2.jpg'),
+(765998,82458,E'https://res.cloudinary.com/outdoorsy/image/upload/v1538027822/p/rentals/82458/images/z9ttep6w8b2ta65pbuz6.jpg'),
+(765999,82458,E'https://res.cloudinary.com/outdoorsy/image/upload/v1538027822/p/rentals/82458/images/zqe98hlkf0chfsq52lq8.jpg'),
+(766000,82458,E'https://res.cloudinary.com/outdoorsy/image/upload/v1538028271/p/rentals/82458/images/obhlvofjt38nro3xztws.jpg'),
+(766001,82458,E'https://res.cloudinary.com/outdoorsy/image/upload/v1538028272/p/rentals/82458/images/morxeuqeanu26iemb8xw.jpg'),
+(766002,82458,E'https://res.cloudinary.com/outdoorsy/image/upload/v1538028274/p/rentals/82458/images/xqiwrwfjj4sdhpjpznne.jpg'),
+(874498,82458,E'https://res.cloudinary.com/outdoorsy/image/upload/v1551044117/p/rentals/82458/images/kl6nujr07aqcluqx23oz.jpg'),
+(766004,82458,E'https://res.cloudinary.com/outdoorsy/image/upload/v1538028277/p/rentals/82458/images/ceagxu0qxnwnfsf1dv86.jpg'),
+(874499,82458,E'https://res.cloudinary.com/outdoorsy/image/upload/v1551044117/p/rentals/82458/images/npkidwewulat3qxuzis7.jpg'),
+(877408,82458,E'https://res.cloudinary.com/outdoorsy/image/upload/v1551322485/p/rentals/82458/images/tvgajyq28nwh5uvltmjw.jpg'),
+(1254983,82458,E'https://res.cloudinary.com/outdoorsy/image/upload/v1583875350/undefined/rentals/82458/images/pbg86sgrc7vwhldqahcl.jpg'),
+(765991,82458,E'https://res.cloudinary.com/outdoorsy/image/upload/v1538027813/p/rentals/82458/images/mc1xgnrbyjygdkjozs6x.jpg'),
+(765988,82458,E'https://res.cloudinary.com/outdoorsy/image/upload/v1538027811/p/rentals/82458/images/vqvnlzonwinqdkkt5hgw.jpg'),
+(766003,82458,E'https://res.cloudinary.com/outdoorsy/image/upload/v1538028275/p/rentals/82458/images/fgkaqptmfszyl5tv62l8.jpg'),
+(724170,91133,E'https://res.cloudinary.com/outdoorsy/image/upload/v1535836965/p/rentals/91133/images/zntjdcnejvkdqx9tqip1.jpg'),
+(724169,91133,E'https://res.cloudinary.com/outdoorsy/image/upload/v1535836892/p/rentals/91133/images/s404gwjiwnmm5xbwolly.jpg'),
+(724168,91133,E'https://res.cloudinary.com/outdoorsy/image/upload/v1535836865/p/rentals/91133/images/blijuwlisflua72ay1p2.jpg'),
+(848322,105564,E'https://res.cloudinary.com/outdoorsy/image/upload/v1548175753/p/rentals/105564/images/ynvhupimcxo0jskpkekj.jpg'),
+(848325,105564,E'https://res.cloudinary.com/outdoorsy/image/upload/v1548175891/p/rentals/105564/images/dmq6pbeqxp2iwqtcks7l.jpg'),
+(848319,105564,E'https://res.cloudinary.com/outdoorsy/image/upload/v1548175694/p/rentals/105564/images/zd17chgkx9pduy0qaypd.png'),
+(848328,105564,E'https://res.cloudinary.com/outdoorsy/image/upload/v1548176287/p/rentals/105564/images/ahf7yyvpopt3lbvkhcmz.jpg'),
+(848226,105564,E'https://res.cloudinary.com/outdoorsy/image/upload/v1548167356/p/rentals/105564/images/fpvztfg5566xcmjejv1u.jpg'),
+(848333,105564,E'https://res.cloudinary.com/outdoorsy/image/upload/v1548176607/p/rentals/105564/images/bhzcbwzkn6orwnoric3r.jpg'),
+(848331,105564,E'https://res.cloudinary.com/outdoorsy/image/upload/v1548176531/p/rentals/105564/images/yhuna1gba20ikw5oiysu.jpg'),
+(848335,105564,E'https://res.cloudinary.com/outdoorsy/image/upload/v1548176770/p/rentals/105564/images/efrkehkxwuzapz0dyocw.jpg'),
+(848321,105564,E'https://res.cloudinary.com/outdoorsy/image/upload/v1548175749/p/rentals/105564/images/qvhsggdwlnzotzh9kw7d.png'),
+(848317,105564,E'https://res.cloudinary.com/outdoorsy/image/upload/v1548175621/p/rentals/105564/images/ycxeuympp6ec8kkzp772.jpg'),
+(848334,105564,E'https://res.cloudinary.com/outdoorsy/image/upload/v1548176735/p/rentals/105564/images/lwm0elb5mzs8m7gqxjta.jpg'),
+(848332,105564,E'https://res.cloudinary.com/outdoorsy/image/upload/v1548176574/p/rentals/105564/images/cip4d3dhusqwoogcoaq8.jpg'),
+(848330,105564,E'https://res.cloudinary.com/outdoorsy/image/upload/v1548176480/p/rentals/105564/images/i6mpdscnhfihdbxlcje5.jpg'),
+(866867,108507,E'https://res.cloudinary.com/outdoorsy/image/upload/v1550269758/p/rentals/108507/images/m0fnborw8psknq33whhv.jpg'),
+(866866,108507,E'https://res.cloudinary.com/outdoorsy/image/upload/v1550269745/p/rentals/108507/images/m9wqtvylndjnwkinxmi2.jpg'),
+(866865,108507,E'https://res.cloudinary.com/outdoorsy/image/upload/v1550269722/p/rentals/108507/images/cvfostivovzuq0jxhgyy.jpg'),
+(866864,108507,E'https://res.cloudinary.com/outdoorsy/image/upload/v1550269708/p/rentals/108507/images/g4qwysyccai6zoqna6o5.jpg'),
+(866863,108507,E'https://res.cloudinary.com/outdoorsy/image/upload/v1550269690/p/rentals/108507/images/xoebw8nq746syazmzjgb.jpg'),
+(866862,108507,E'https://res.cloudinary.com/outdoorsy/image/upload/v1550269675/p/rentals/108507/images/icgbvtlaneemyij5kx4j.jpg'),
+(866861,108507,E'https://res.cloudinary.com/outdoorsy/image/upload/v1550269656/p/rentals/108507/images/enbz9dcap0raimsw4cru.jpg'),
+(866860,108507,E'https://res.cloudinary.com/outdoorsy/image/upload/v1550269647/p/rentals/108507/images/i2jarw5rrfi6mlqioyyt.jpg'),
+(866859,108507,E'https://res.cloudinary.com/outdoorsy/image/upload/v1550269634/p/rentals/108507/images/xmxgfbs1wjswivwvh0tw.jpg'),
+(866858,108507,E'https://res.cloudinary.com/outdoorsy/image/upload/v1550269605/p/rentals/108507/images/iksk1lpvhpqjdlhcrybb.jpg'),
+(866857,108507,E'https://res.cloudinary.com/outdoorsy/image/upload/v1550269594/p/rentals/108507/images/eblyqjdwhfclsgrv8yex.jpg'),
+(866856,108507,E'https://res.cloudinary.com/outdoorsy/image/upload/v1550269582/p/rentals/108507/images/q4hlutbzuj4etdnaziei.jpg'),
+(866855,108507,E'https://res.cloudinary.com/outdoorsy/image/upload/v1550269551/p/rentals/108507/images/muazg5ipnwkblec2ngz4.jpg'),
+(866854,108507,E'https://res.cloudinary.com/outdoorsy/image/upload/v1550269521/p/rentals/108507/images/zlruuz6ll72taorfwjs1.jpg'),
+(866853,108507,E'https://res.cloudinary.com/outdoorsy/image/upload/v1550269500/p/rentals/108507/images/hl8d1gabqmt4qqrbndhy.jpg'),
+(932117,109101,E'https://res.cloudinary.com/outdoorsy/image/upload/v1556142498/p/rentals/109101/images/iwxeruolzf0rncexy3no.jpg'),
+(932113,109101,E'https://res.cloudinary.com/outdoorsy/image/upload/v1556142483/p/rentals/109101/images/ea2vvbovq0tvouj00fad.jpg'),
+(932115,109101,E'https://res.cloudinary.com/outdoorsy/image/upload/v1556142497/p/rentals/109101/images/jk9hh3e8sjluawrtdote.jpg'),
+(1034311,109101,E'https://res.cloudinary.com/outdoorsy/image/upload/v1562732637/p/rentals/109101/images/mairthro2j68nfnkw5hr.jpg'),
+(932119,109101,E'https://res.cloudinary.com/outdoorsy/image/upload/v1556142519/p/rentals/109101/images/gioyp23hlgxnxeu4ywqt.jpg'),
+(932438,109101,E'https://res.cloudinary.com/outdoorsy/image/upload/v1556153792/p/rentals/109101/images/msq481vuxg7wgpnxnfqw.jpg'),
+(932120,109101,E'https://res.cloudinary.com/outdoorsy/image/upload/v1556142552/p/rentals/109101/images/a1jtebpg7rqyikczek5w.jpg'),
+(1034313,109101,E'https://res.cloudinary.com/outdoorsy/image/upload/v1562732658/p/rentals/109101/images/mtlzigyfecfbnbljxdwx.jpg'),
+(932434,109101,E'https://res.cloudinary.com/outdoorsy/image/upload/v1556153707/p/rentals/109101/images/q93watscotmudsqp8pgl.jpg'),
+(932433,109101,E'https://res.cloudinary.com/outdoorsy/image/upload/v1556153706/p/rentals/109101/images/z0jdvs9icsiosjoetv2p.jpg'),
+(932435,109101,E'https://res.cloudinary.com/outdoorsy/image/upload/v1556153722/p/rentals/109101/images/ewpmstqvmfdmpp0acqdn.jpg'),
+(932118,109101,E'https://res.cloudinary.com/outdoorsy/image/upload/v1556142498/p/rentals/109101/images/rvtosxtujf9pxat1d8ip.jpg'),
+(1034312,109101,E'https://res.cloudinary.com/outdoorsy/image/upload/v1562732650/p/rentals/109101/images/tepuestdzllujvcylvug.jpg'),
+(932116,109101,E'https://res.cloudinary.com/outdoorsy/image/upload/v1556142498/p/rentals/109101/images/xdkmtsypr89jumjirpxe.jpg'),
+(932114,109101,E'https://res.cloudinary.com/outdoorsy/image/upload/v1556142497/p/rentals/109101/images/ff1cr3lawhgczwzaqolo.jpg'),
+(917885,115462,E'https://res.cloudinary.com/outdoorsy/image/upload/v1554872879/p/rentals/115462/images/cgtjqbcdpvfwfhzddf5q.jpg'),
+(917884,115462,E'https://res.cloudinary.com/outdoorsy/image/upload/v1554872876/p/rentals/115462/images/mz1gcldnh49ndsamxtnl.jpg'),
+(917882,115462,E'https://res.cloudinary.com/outdoorsy/image/upload/v1554872875/p/rentals/115462/images/bfenqnbxziiaxuq9wccg.jpg'),
+(917874,115462,E'https://res.cloudinary.com/outdoorsy/image/upload/v1554872869/p/rentals/115462/images/pm0mvjkdgr0injgl1etc.jpg'),
+(917872,115462,E'https://res.cloudinary.com/outdoorsy/image/upload/v1554872867/p/rentals/115462/images/bzyyvd8qcrqc5aovhbuu.jpg'),
+(917873,115462,E'https://res.cloudinary.com/outdoorsy/image/upload/v1554872867/p/rentals/115462/images/sjzh4tkv8ymn3jqurjsz.jpg'),
+(917881,115462,E'https://res.cloudinary.com/outdoorsy/image/upload/v1554872874/p/rentals/115462/images/j1okfy0nm7zsxes73pt3.jpg'),
+(917871,115462,E'https://res.cloudinary.com/outdoorsy/image/upload/v1554872867/p/rentals/115462/images/j0hpgahymnl5nj7nyyti.jpg'),
+(917870,115462,E'https://res.cloudinary.com/outdoorsy/image/upload/v1554872866/p/rentals/115462/images/slbs8siivevk93pwzkoe.jpg'),
+(917883,115462,E'https://res.cloudinary.com/outdoorsy/image/upload/v1554872876/p/rentals/115462/images/ztsezyx138fbmmy00rpx.jpg'),
+(917880,115462,E'https://res.cloudinary.com/outdoorsy/image/upload/v1554872874/p/rentals/115462/images/zqnvzsyj9wb0iz9cxzrr.jpg'),
+(917879,115462,E'https://res.cloudinary.com/outdoorsy/image/upload/v1554872873/p/rentals/115462/images/qnsbiznxh9hxttrlmwuq.jpg'),
+(917878,115462,E'https://res.cloudinary.com/outdoorsy/image/upload/v1554872869/p/rentals/115462/images/weaezarmkccjvrpwjeli.jpg'),
+(1022808,119031,E'https://res.cloudinary.com/outdoorsy/image/upload/v1562024352/p/rentals/119031/images/gokdyrm02hsxc6xbhorj.jpg'),
+(1022810,119031,E'https://res.cloudinary.com/outdoorsy/image/upload/v1562024354/p/rentals/119031/images/dkjhvmxbjvbrhqfkexb9.jpg'),
+(1357461,119031,E'https://res.cloudinary.com/outdoorsy/image/upload/v1593537536/p/rentals/119031/images/rcm4qyqdyqlzavhkfmfj.jpg'),
+(1022738,119031,E'https://res.cloudinary.com/outdoorsy/image/upload/v1562023338/p/rentals/119031/images/wchguimw6h3u9oonba9b.jpg'),
+(947216,119031,E'https://res.cloudinary.com/outdoorsy/image/upload/v1557102131/p/rentals/119031/images/sy7p4liiqlve9yccshgo.jpg'),
+(947212,119031,E'https://res.cloudinary.com/outdoorsy/image/upload/v1557102000/p/rentals/119031/images/j88b5kir1vbisat1sypu.jpg'),
+(1022807,119031,E'https://res.cloudinary.com/outdoorsy/image/upload/v1562024352/p/rentals/119031/images/rv9nm9acvvgzvqpdnoc5.jpg'),
+(947222,119031,E'https://res.cloudinary.com/outdoorsy/image/upload/v1557102192/p/rentals/119031/images/plin9xyipehvz4h6hlfp.jpg'),
+(1022739,119031,E'https://res.cloudinary.com/outdoorsy/image/upload/v1562023340/p/rentals/119031/images/f4krxknui4v2mdmzoliu.jpg'),
+(1022741,119031,E'https://res.cloudinary.com/outdoorsy/image/upload/v1562023348/p/rentals/119031/images/zznyet3kee7cv7k22b1j.jpg'),
+(1022742,119031,E'https://res.cloudinary.com/outdoorsy/image/upload/v1562023349/p/rentals/119031/images/d2apkdk8jvnadhep7pcf.jpg'),
+(1022740,119031,E'https://res.cloudinary.com/outdoorsy/image/upload/v1562023344/p/rentals/119031/images/xo7eb4uoqawhbhkkv9vz.jpg'),
+(1022743,119031,E'https://res.cloudinary.com/outdoorsy/image/upload/v1562023350/p/rentals/119031/images/h7ibi0ubzbz8z7jobkns.jpg'),
+(1022744,119031,E'https://res.cloudinary.com/outdoorsy/image/upload/v1562023353/p/rentals/119031/images/bi944cdkn6rreschkomm.jpg'),
+(1228093,119031,E'https://res.cloudinary.com/outdoorsy/image/upload/v1581473253/undefined/rentals/119031/images/pjgwus1sw61cenze0tgd.jpg'),
+(1357462,119031,E'https://res.cloudinary.com/outdoorsy/image/upload/v1593537601/p/rentals/119031/images/trtlwdudfwnyqnnzqmoj.jpg'),
+(1022809,119031,E'https://res.cloudinary.com/outdoorsy/image/upload/v1562024353/p/rentals/119031/images/q0gfzzjs1ja1y59aifkk.jpg'),
+(954548,119960,E'https://res.cloudinary.com/outdoorsy/image/upload/v1557630841/p/rentals/119960/images/vdvdhxvyv0kbb564nyr5.jpg'),
+(954549,119960,E'https://res.cloudinary.com/outdoorsy/image/upload/v1557630841/p/rentals/119960/images/qfvxrqebqumjs7mp0xoq.jpg'),
+(954547,119960,E'https://res.cloudinary.com/outdoorsy/image/upload/v1557630839/p/rentals/119960/images/z5ll435iqprnezuqdvjs.jpg'),
+(954553,119960,E'https://res.cloudinary.com/outdoorsy/image/upload/v1557630874/p/rentals/119960/images/krd03lwx7d8fsaorxlwo.jpg'),
+(954559,119960,E'https://res.cloudinary.com/outdoorsy/image/upload/v1557630925/p/rentals/119960/images/h8sjsnadgic8k1uswjjy.jpg'),
+(954563,119960,E'https://res.cloudinary.com/outdoorsy/image/upload/v1557630945/p/rentals/119960/images/rivrj3guy1zdgnnbome5.jpg'),
+(954551,119960,E'https://res.cloudinary.com/outdoorsy/image/upload/v1557630860/p/rentals/119960/images/dzmvosl7kg2xzylwvmpu.jpg'),
+(954567,119960,E'https://res.cloudinary.com/outdoorsy/image/upload/v1557630964/p/rentals/119960/images/icwnto4tjvxasdkb8rhg.jpg'),
+(954552,119960,E'https://res.cloudinary.com/outdoorsy/image/upload/v1557630872/p/rentals/119960/images/sk5a6kgsqspgn5yg8si1.jpg'),
+(954569,119960,E'https://res.cloudinary.com/outdoorsy/image/upload/v1557631006/p/rentals/119960/images/y29hmnqhyfth5umb9egh.png'),
+(954565,119960,E'https://res.cloudinary.com/outdoorsy/image/upload/v1557630960/p/rentals/119960/images/b96w4a8jwf9be0lx9mag.jpg'),
+(954562,119960,E'https://res.cloudinary.com/outdoorsy/image/upload/v1557630940/p/rentals/119960/images/pveecmt9d9x63p3ihyq5.jpg'),
+(954554,119960,E'https://res.cloudinary.com/outdoorsy/image/upload/v1557630888/p/rentals/119960/images/pqyupcbrbu4vfe40iufd.jpg'),
+(954556,119960,E'https://res.cloudinary.com/outdoorsy/image/upload/v1557630895/p/rentals/119960/images/smcc460nzdnsby5e0lsn.jpg'),
+(954550,119960,E'https://res.cloudinary.com/outdoorsy/image/upload/v1557630848/p/rentals/119960/images/gitrhyr4rmvz4rijmwjr.jpg'),
+(954560,119960,E'https://res.cloudinary.com/outdoorsy/image/upload/v1557630926/p/rentals/119960/images/fz1k3cdfidlbfqmgq3x3.jpg'),
+(961328,119960,E'https://res.cloudinary.com/outdoorsy/image/upload/v1558048520/p/rentals/119960/images/sceobzuac0stwyrndi2z.jpg'),
+(954568,119960,E'https://res.cloudinary.com/outdoorsy/image/upload/v1557630975/p/rentals/119960/images/uh3hwtjj1szdoab4velb.jpg'),
+(954546,119960,E'https://res.cloudinary.com/outdoorsy/image/upload/v1557630835/p/rentals/119960/images/xbckfjg8rrp0pxp969rq.jpg'),
+(954555,119960,E'https://res.cloudinary.com/outdoorsy/image/upload/v1557630891/p/rentals/119960/images/owixzlketd5mbz645uci.jpg'),
+(954557,119960,E'https://res.cloudinary.com/outdoorsy/image/upload/v1557630902/p/rentals/119960/images/mlxutxhjwtcmbamsghrb.jpg'),
+(954561,119960,E'https://res.cloudinary.com/outdoorsy/image/upload/v1557630926/p/rentals/119960/images/aambjvffjy5td7lonvtu.jpg'),
+(954564,119960,E'https://res.cloudinary.com/outdoorsy/image/upload/v1557630951/p/rentals/119960/images/nypxfa7hkg76vi5uaomo.jpg'),
+(954566,119960,E'https://res.cloudinary.com/outdoorsy/image/upload/v1557630962/p/rentals/119960/images/wghvxdnohp99b9ew5stc.jpg'),
+(961943,120853,E'https://res.cloudinary.com/outdoorsy/image/upload/v1558102819/p/rentals/120853/images/lmx0f2klrsdbmmuhflvm.jpg'),
+(961944,120853,E'https://res.cloudinary.com/outdoorsy/image/upload/v1558102828/p/rentals/120853/images/npwtgd55jpo1jjeyacm5.jpg'),
+(961945,120853,E'https://res.cloudinary.com/outdoorsy/image/upload/v1558102832/p/rentals/120853/images/ewy6onpx2f7lznupgo7c.jpg'),
+(961940,120853,E'https://res.cloudinary.com/outdoorsy/image/upload/v1558102796/p/rentals/120853/images/lqzc082ehx9xpo4zsl5d.jpg'),
+(1063118,120853,E'https://res.cloudinary.com/outdoorsy/image/upload/v1564619447/p/rentals/120853/images/jjfx8ur5zm157zzyss4j.jpg'),
+(961948,120853,E'https://res.cloudinary.com/outdoorsy/image/upload/v1558102892/p/rentals/120853/images/p56vujposhzmrfbg1ogp.jpg'),
+(961947,120853,E'https://res.cloudinary.com/outdoorsy/image/upload/v1558102857/p/rentals/120853/images/az0gpfurh0w8v2ickejs.jpg'),
+(961946,120853,E'https://res.cloudinary.com/outdoorsy/image/upload/v1558102848/p/rentals/120853/images/mwqcsllolikiofedfima.jpg'),
+(1063117,120853,E'https://res.cloudinary.com/outdoorsy/image/upload/v1564619447/p/rentals/120853/images/zpzzqkiiekgahprcjkh2.jpg'),
+(961941,120853,E'https://res.cloudinary.com/outdoorsy/image/upload/v1558102804/p/rentals/120853/images/alfhzrhczcbo8d2pwmms.jpg'),
+(1161682,122562,E'https://res.cloudinary.com/outdoorsy/image/upload/v1572716233/p/rentals/122562/images/k588youqicsja9ywbvc4.jpg'),
+(1161683,122562,E'https://res.cloudinary.com/outdoorsy/image/upload/v1572716232/p/rentals/122562/images/iq4d3rfmwnlk1beyfzdf.jpg'),
+(1161681,122562,E'https://res.cloudinary.com/outdoorsy/image/upload/v1572716112/p/rentals/122562/images/pyy6w6xc3b3p11di37wm.jpg'),
+(1161680,122562,E'https://res.cloudinary.com/outdoorsy/image/upload/v1572716112/p/rentals/122562/images/kzprabntk4n67lclikqf.jpg'),
+(1161676,122562,E'https://res.cloudinary.com/outdoorsy/image/upload/v1572716110/p/rentals/122562/images/yixum1lfszpeac1kun06.jpg'),
+(1161672,122562,E'https://res.cloudinary.com/outdoorsy/image/upload/v1572716107/p/rentals/122562/images/byzyqlai3js9fo42oaol.jpg'),
+(1161675,122562,E'https://res.cloudinary.com/outdoorsy/image/upload/v1572716107/p/rentals/122562/images/kgeogevfagxeqrfrpyac.jpg'),
+(1161679,122562,E'https://res.cloudinary.com/outdoorsy/image/upload/v1572716112/p/rentals/122562/images/speuyul3h7d6bias9ehm.jpg'),
+(1161678,122562,E'https://res.cloudinary.com/outdoorsy/image/upload/v1572716111/p/rentals/122562/images/jeiol0vx9tbdzsgylcgk.jpg'),
+(1161677,122562,E'https://res.cloudinary.com/outdoorsy/image/upload/v1572716110/p/rentals/122562/images/khp0adw4wa0ducqg71bo.jpg'),
+(1161674,122562,E'https://res.cloudinary.com/outdoorsy/image/upload/v1572716108/p/rentals/122562/images/mla6ztnxvzikrvyi8rnt.jpg'),
+(1161673,122562,E'https://res.cloudinary.com/outdoorsy/image/upload/v1572716107/p/rentals/122562/images/bftndstsmqwlxnhclsw8.jpg'),
+(1161671,122562,E'https://res.cloudinary.com/outdoorsy/image/upload/v1572716105/p/rentals/122562/images/ooagmqh874q3bvwlqatl.jpg'),
+(1009694,127213,E'https://res.cloudinary.com/outdoorsy/image/upload/v1561148805/p/rentals/127213/images/jv1xi1gks96oemiwknqs.jpg'),
+(1009696,127213,E'https://res.cloudinary.com/outdoorsy/image/upload/v1561148807/p/rentals/127213/images/dejb94um61c3llqromol.jpg'),
+(1009698,127213,E'https://res.cloudinary.com/outdoorsy/image/upload/v1561148809/p/rentals/127213/images/idpkdxfre5uusrsfa3qn.jpg'),
+(1009692,127213,E'https://res.cloudinary.com/outdoorsy/image/upload/v1561148804/p/rentals/127213/images/nzy6l3f8kndnsafvl2kw.jpg'),
+(1009695,127213,E'https://res.cloudinary.com/outdoorsy/image/upload/v1561148807/p/rentals/127213/images/lmeyj7azs4f6azldq1fm.jpg'),
+(1009693,127213,E'https://res.cloudinary.com/outdoorsy/image/upload/v1561148804/p/rentals/127213/images/tlbmzttamvxtyedkj59e.jpg'),
+(1009699,127213,E'https://res.cloudinary.com/outdoorsy/image/upload/v1561148811/p/rentals/127213/images/fvcine0arhffvaq7fs4k.jpg'),
+(1009697,127213,E'https://res.cloudinary.com/outdoorsy/image/upload/v1561148807/p/rentals/127213/images/uvoi7qemqihrbla5rjku.jpg'),
+(1068793,135075,E'https://res.cloudinary.com/outdoorsy/image/upload/v1565039247/p/rentals/135075/images/e3gicwvjxpdurjgltrq4.jpg'),
+(1068808,135075,E'https://res.cloudinary.com/outdoorsy/image/upload/v1565039645/p/rentals/135075/images/fcfrvtmr2n3ejrcdtsup.jpg'),
+(1068792,135075,E'https://res.cloudinary.com/outdoorsy/image/upload/v1565039202/p/rentals/135075/images/qzshxyzofqz6bawudfd2.jpg'),
+(1108536,135075,E'https://res.cloudinary.com/outdoorsy/image/upload/v1567524960/p/rentals/135075/images/is7yeot6z0gk17teecjp.jpg'),
+(1108535,135075,E'https://res.cloudinary.com/outdoorsy/image/upload/v1567524925/p/rentals/135075/images/xg3iky1fn5h9tx3i2wqz.jpg'),
+(1091564,135075,E'https://res.cloudinary.com/outdoorsy/image/upload/v1566496623/p/rentals/135075/images/mxpihm9xmsippph6aozi.jpg'),
+(1091522,135075,E'https://res.cloudinary.com/outdoorsy/image/upload/v1566494037/p/rentals/135075/images/prdj3m81inir1md4nyrr.jpg'),
+(1080396,135075,E'https://res.cloudinary.com/outdoorsy/image/upload/v1565796850/p/rentals/135075/images/zklv2azkuph3pq9eidks.jpg'),
+(1068811,135075,E'https://res.cloudinary.com/outdoorsy/image/upload/v1565039745/p/rentals/135075/images/sjcwnkmhvylzec1tnx70.jpg'),
+(1068795,135075,E'https://res.cloudinary.com/outdoorsy/image/upload/v1565039300/p/rentals/135075/images/hdtwznso4mckdnvgm9o1.jpg'),
+(1068794,135075,E'https://res.cloudinary.com/outdoorsy/image/upload/v1565039275/p/rentals/135075/images/c5tff17wq4bs8fe2jitd.jpg'),
+(1101147,137341,E'https://res.cloudinary.com/outdoorsy/image/upload/v1567092679/p/rentals/137341/images/egkmrqsznc1jo6jtzbkq.jpg'),
+(1101145,137341,E'https://res.cloudinary.com/outdoorsy/image/upload/v1567092673/p/rentals/137341/images/ms68oj41vlzuehoohy7u.jpg'),
+(1101146,137341,E'https://res.cloudinary.com/outdoorsy/image/upload/v1567092678/p/rentals/137341/images/ywdccc4gg4f8vyfdpwbl.jpg'),
+(1086792,137341,E'https://res.cloudinary.com/outdoorsy/image/upload/v1566167060/p/rentals/137341/images/shi6g0ja8osf3idohqqq.jpg'),
+(1086791,137341,E'https://res.cloudinary.com/outdoorsy/image/upload/v1566167060/p/rentals/137341/images/tnyrtmxobwkllgg1qvju.jpg'),
+(1086790,137341,E'https://res.cloudinary.com/outdoorsy/image/upload/v1566167058/p/rentals/137341/images/phdhwaurayvimnfwz2d2.jpg'),
+(1086789,137341,E'https://res.cloudinary.com/outdoorsy/image/upload/v1566167058/p/rentals/137341/images/owl2db2y1j0imxyh0ktp.jpg'),
+(1089016,137450,E'https://res.cloudinary.com/outdoorsy/image/upload/v1566292990/p/rentals/137450/images/m1axdiiyampit2da6ufu.jpg'),
+(1108117,138114,E'https://res.cloudinary.com/outdoorsy/image/upload/v1567488885/undefined/rentals/138114/images/b7dhirdtbgdz95dslq6e.jpg'),
+(1108118,138114,E'https://res.cloudinary.com/outdoorsy/image/upload/v1567488893/undefined/rentals/138114/images/jfri7e26dcs8qczovzfe.jpg'),
+(1108116,138114,E'https://res.cloudinary.com/outdoorsy/image/upload/v1567488873/undefined/rentals/138114/images/yaxmjiwcw07jelxfvdk9.jpg'),
+(1108123,138114,E'https://res.cloudinary.com/outdoorsy/image/upload/v1567488932/undefined/rentals/138114/images/bxpz5xu2s7uduzn63lv1.jpg'),
+(1108122,138114,E'https://res.cloudinary.com/outdoorsy/image/upload/v1567488926/undefined/rentals/138114/images/gh42vvb9rz5g2raxojip.jpg'),
+(1108121,138114,E'https://res.cloudinary.com/outdoorsy/image/upload/v1567488917/undefined/rentals/138114/images/fiqvr8pbmudyybocphdj.jpg'),
+(1108120,138114,E'https://res.cloudinary.com/outdoorsy/image/upload/v1567488909/undefined/rentals/138114/images/couhkcw4hwrkyzyvit6k.jpg'),
+(1108119,138114,E'https://res.cloudinary.com/outdoorsy/image/upload/v1567488901/undefined/rentals/138114/images/xu7gxxplkwo2an5haqkm.jpg'),
+(1108115,138114,E'https://res.cloudinary.com/outdoorsy/image/upload/v1567488861/undefined/rentals/138114/images/aet5fd6g1g4l41otjncg.jpg'),
+(1108114,138114,E'https://res.cloudinary.com/outdoorsy/image/upload/v1567488852/undefined/rentals/138114/images/hrkwecqzfsisl7q9a77w.jpg'),
+(1108112,138114,E'https://res.cloudinary.com/outdoorsy/image/upload/v1567488804/undefined/rentals/138114/images/jbh23tie6uzrtkaeemxg.jpg'),
+(1092881,138114,E'https://res.cloudinary.com/outdoorsy/image/upload/v1566599922/p/rentals/138114/images/ab2mosnnlfudkxhqgqcy.jpg'),
+(1135989,143740,E'https://res.cloudinary.com/outdoorsy/image/upload/v1569722280/p/rentals/143740/images/canorwurk2ieojapp9tl.jpg'),
+(1135987,143740,E'https://res.cloudinary.com/outdoorsy/image/upload/v1569722279/p/rentals/143740/images/cuc6rbqbwxyj4stxicqt.jpg'),
+(1135969,143740,E'https://res.cloudinary.com/outdoorsy/image/upload/v1569722248/p/rentals/143740/images/seidis1f1istcadb13ju.jpg'),
+(1135965,143740,E'https://res.cloudinary.com/outdoorsy/image/upload/v1569722222/p/rentals/143740/images/u6wnaqf7cqghnkqpe22a.png'),
+(1135964,143740,E'https://res.cloudinary.com/outdoorsy/image/upload/v1569722223/p/rentals/143740/images/qxw2i37dyxjcejwo57pu.png'),
+(1135963,143740,E'https://res.cloudinary.com/outdoorsy/image/upload/v1569722223/p/rentals/143740/images/emwc3hwwl33nzujihevb.png'),
+(1135962,143740,E'https://res.cloudinary.com/outdoorsy/image/upload/v1569722223/p/rentals/143740/images/qoynf4amvyz3qwklbhcz.png'),
+(1135961,143740,E'https://res.cloudinary.com/outdoorsy/image/upload/v1569722222/p/rentals/143740/images/s3tvbchsg98rijoxdg4d.png'),
+(1135960,143740,E'https://res.cloudinary.com/outdoorsy/image/upload/v1569722222/p/rentals/143740/images/ooxoce0zrlycj5esm3jh.png'),
+(1150904,145653,E'https://res.cloudinary.com/outdoorsy/image/upload/v1571422971/p/rentals/145653/images/r60xeyl3cthyk4opmpll.jpg'),
+(1150903,145653,E'https://res.cloudinary.com/outdoorsy/image/upload/v1571422971/p/rentals/145653/images/nso1rfvsrdpmtgvjcllw.jpg'),
+(1150906,145653,E'https://res.cloudinary.com/outdoorsy/image/upload/v1571422974/p/rentals/145653/images/weiseshexlocuij84sev.jpg'),
+(1150907,145653,E'https://res.cloudinary.com/outdoorsy/image/upload/v1571422978/p/rentals/145653/images/cy74icmc2qj0oo6zkgqe.jpg'),
+(1150909,145653,E'https://res.cloudinary.com/outdoorsy/image/upload/v1571422979/p/rentals/145653/images/vdusiwydeuo6mwt2sy6p.jpg'),
+(1150910,145653,E'https://res.cloudinary.com/outdoorsy/image/upload/v1571422979/p/rentals/145653/images/yhpuvaga5pw0gzra90n0.jpg'),
+(1150908,145653,E'https://res.cloudinary.com/outdoorsy/image/upload/v1571422979/p/rentals/145653/images/hooadkmwskqpil5gbjxn.jpg'),
+(1150901,145653,E'https://res.cloudinary.com/outdoorsy/image/upload/v1571422968/p/rentals/145653/images/oewwdp0fypfqsevlbqem.jpg'),
+(1150905,145653,E'https://res.cloudinary.com/outdoorsy/image/upload/v1571422972/p/rentals/145653/images/wthojxb5l6xpjufemcek.jpg'),
+(1150902,145653,E'https://res.cloudinary.com/outdoorsy/image/upload/v1571422970/p/rentals/145653/images/vw65b7fuvmhxbfsjprpt.jpg'),
+(1153616,145954,E'https://res.cloudinary.com/outdoorsy/image/upload/v1571733896/p/rentals/145954/images/g8idquv5s5t5qdyvsige.jpg'),
+(1153617,145954,E'https://res.cloudinary.com/outdoorsy/image/upload/v1571733918/p/rentals/145954/images/ctqcmegtl1wjozqdngxz.jpg'),
+(1153613,145954,E'https://res.cloudinary.com/outdoorsy/image/upload/v1571733762/p/rentals/145954/images/vsfnbm9ib35g42f2uiww.jpg'),
+(1153615,145954,E'https://res.cloudinary.com/outdoorsy/image/upload/v1571733863/p/rentals/145954/images/azbcpnpo2zql4spibvlo.jpg'),
+(1153614,145954,E'https://res.cloudinary.com/outdoorsy/image/upload/v1571733799/p/rentals/145954/images/tq1ad6hdezwcxkpbb8z3.jpg'),
+(1153609,145954,E'https://res.cloudinary.com/outdoorsy/image/upload/v1571732982/p/rentals/145954/images/gj4muh11n0rbxi8y3b47.jpg'),
+(1153612,145954,E'https://res.cloudinary.com/outdoorsy/image/upload/v1571733730/p/rentals/145954/images/tksrdxu8zmhi4u15kyut.jpg'),
+(1153610,145954,E'https://res.cloudinary.com/outdoorsy/image/upload/v1571733611/p/rentals/145954/images/xitp0yj8m1awvvfzipij.jpg'),
+(1153611,145954,E'https://res.cloudinary.com/outdoorsy/image/upload/v1571733730/p/rentals/145954/images/xmyucmhdox4vecac9cwj.jpg'),
+(1157349,146330,E'https://res.cloudinary.com/outdoorsy/image/upload/v1572098308/p/rentals/146330/images/v7jnt5rf5efkdlf4niud.jpg'),
+(1157351,146330,E'https://res.cloudinary.com/outdoorsy/image/upload/v1572098377/p/rentals/146330/images/y0xbxqkidxmh1q9fqvta.jpg'),
+(1157348,146330,E'https://res.cloudinary.com/outdoorsy/image/upload/v1572098308/p/rentals/146330/images/l0zcxu8nickkip6hzk0x.jpg'),
+(1157342,146330,E'https://res.cloudinary.com/outdoorsy/image/upload/v1572098266/p/rentals/146330/images/hk8yklm5a51qisr6lcyj.jpg'),
+(1157338,146330,E'https://res.cloudinary.com/outdoorsy/image/upload/v1572098257/p/rentals/146330/images/p4yes9tepvixnlcz4ick.jpg'),
+(1157340,146330,E'https://res.cloudinary.com/outdoorsy/image/upload/v1572098258/p/rentals/146330/images/yjzolxrjbbkgjpc1ddte.jpg'),
+(1157359,146330,E'https://res.cloudinary.com/outdoorsy/image/upload/v1572098408/p/rentals/146330/images/w9rkb2ba5kax8aci4urw.jpg'),
+(1157350,146330,E'https://res.cloudinary.com/outdoorsy/image/upload/v1572098377/p/rentals/146330/images/xib4hpwlinvzis2nycbq.jpg'),
+(1157343,146330,E'https://res.cloudinary.com/outdoorsy/image/upload/v1572098267/p/rentals/146330/images/qdmaevuhkrhg2lfnwy1d.jpg'),
+(1157341,146330,E'https://res.cloudinary.com/outdoorsy/image/upload/v1572098265/p/rentals/146330/images/uqlfzrfeuoeukzploace.jpg'),
+(1157339,146330,E'https://res.cloudinary.com/outdoorsy/image/upload/v1572098257/p/rentals/146330/images/h4ayj7tpdzze95xurigi.jpg'),
+(1233713,153401,E'https://res.cloudinary.com/outdoorsy/image/upload/v1582091318/p/rentals/153401/images/keiil9giyticaotnghxn.jpg'),
+(1233708,153401,E'https://res.cloudinary.com/outdoorsy/image/upload/v1582091290/p/rentals/153401/images/h6mesyvj0k7ebouszqhm.jpg'),
+(1213836,153401,E'https://res.cloudinary.com/outdoorsy/image/upload/v1579821718/p/rentals/153401/images/f4axpwkjymu3jqpoqusx.jpg'),
+(1233709,153401,E'https://res.cloudinary.com/outdoorsy/image/upload/v1582091293/p/rentals/153401/images/wjbhgv8jw34ansv1ivmr.jpg'),
+(1213837,153401,E'https://res.cloudinary.com/outdoorsy/image/upload/v1579821718/p/rentals/153401/images/su7vbzy55pqpncrhnyzw.jpg'),
+(1262179,153401,E'https://res.cloudinary.com/outdoorsy/image/upload/v1584996651/p/rentals/153401/images/jd9sru13qufduje9ctb7.jpg'),
+(1262178,153401,E'https://res.cloudinary.com/outdoorsy/image/upload/v1584996632/p/rentals/153401/images/ll1efqyk5hfvgbelqd4y.jpg'),
+(1262177,153401,E'https://res.cloudinary.com/outdoorsy/image/upload/v1584996630/p/rentals/153401/images/yznyneqgyl6oppzwicew.jpg'),
+(1262176,153401,E'https://res.cloudinary.com/outdoorsy/image/upload/v1584996621/p/rentals/153401/images/mqq3mghegmznha7ammeq.jpg'),
+(1262175,153401,E'https://res.cloudinary.com/outdoorsy/image/upload/v1584996602/p/rentals/153401/images/bwksvqkx8pocrctdhs2h.jpg'),
+(1262174,153401,E'https://res.cloudinary.com/outdoorsy/image/upload/v1584996600/p/rentals/153401/images/vcbqg2wjenbfbo9rwhzs.jpg'),
+(1262173,153401,E'https://res.cloudinary.com/outdoorsy/image/upload/v1584996577/p/rentals/153401/images/lpsxyawxlkpij0klvksg.jpg'),
+(1259167,153401,E'https://res.cloudinary.com/outdoorsy/image/upload/v1584383726/p/rentals/153401/images/vzpqb8wnttpzutkthzxo.jpg'),
+(1233712,153401,E'https://res.cloudinary.com/outdoorsy/image/upload/v1582091304/p/rentals/153401/images/zffokjzn3k0i41r79a9g.jpg'),
+(1213838,153401,E'https://res.cloudinary.com/outdoorsy/image/upload/v1579821719/p/rentals/153401/images/vyfjg76au7dbrnfoyw2z.jpg'),
+(1233717,153401,E'https://res.cloudinary.com/outdoorsy/image/upload/v1582091410/p/rentals/153401/images/hjql2d12wf5x7l6j1hvw.jpg'),
+(1213833,153401,E'https://res.cloudinary.com/outdoorsy/image/upload/v1579821717/p/rentals/153401/images/zu7dqhke7hlzcu9ocgxa.jpg'),
+(1233710,153401,E'https://res.cloudinary.com/outdoorsy/image/upload/v1582091293/p/rentals/153401/images/kaqt2b6n6sm1xnmvbi5w.jpg'),
+(1218908,153401,E'https://res.cloudinary.com/outdoorsy/image/upload/v1580406415/p/rentals/153401/images/h0lknl47desa2aozro1p.jpg'),
+(1213835,153401,E'https://res.cloudinary.com/outdoorsy/image/upload/v1579821718/p/rentals/153401/images/gapdrbyfisj06hqci1l6.jpg'),
+(1290859,156152,E'https://res.cloudinary.com/outdoorsy/image/upload/v1589910504/p/rentals/156152/images/lzkylef3oh18wke0z7f7.jpg'),
+(1290860,156152,E'https://res.cloudinary.com/outdoorsy/image/upload/v1589910515/p/rentals/156152/images/qdfxiz43o6iob6az0kte.jpg'),
+(1290861,156152,E'https://res.cloudinary.com/outdoorsy/image/upload/v1589910519/p/rentals/156152/images/fhxksadiyfz55spftkf1.jpg'),
+(1290862,156152,E'https://res.cloudinary.com/outdoorsy/image/upload/v1589910527/p/rentals/156152/images/v0bpn6znaza6qtkto1t1.jpg'),
+(1290863,156152,E'https://res.cloudinary.com/outdoorsy/image/upload/v1589910539/p/rentals/156152/images/u7onqzcclegy4bwggb2p.jpg'),
+(1290864,156152,E'https://res.cloudinary.com/outdoorsy/image/upload/v1589910541/p/rentals/156152/images/jvyvtqoeljadoizjjzag.jpg'),
+(1333502,162781,E'https://res.cloudinary.com/outdoorsy/image/upload/v1592511472/p/rentals/162781/images/mcf8dvsjbshhhxbxkyuw.jpg'),
+(1333504,162781,E'https://res.cloudinary.com/outdoorsy/image/upload/v1592511667/p/rentals/162781/images/mpyappvzqooowm7j4que.jpg'),
+(1278683,162781,E'https://res.cloudinary.com/outdoorsy/image/upload/v1588550861/p/rentals/162781/images/tuze0hcsqhastppdaf4q.jpg'),
+(1278682,162781,E'https://res.cloudinary.com/outdoorsy/image/upload/v1588550855/p/rentals/162781/images/az0xp8wbdto4pjzlkyh3.jpg'),
+(1282709,162781,E'https://res.cloudinary.com/outdoorsy/image/upload/v1589136432/p/rentals/162781/images/wl0kaas7echtb47wycbk.jpg'),
+(1278684,162781,E'https://res.cloudinary.com/outdoorsy/image/upload/v1588550866/p/rentals/162781/images/d5hocfpoobuiggvmtadg.jpg'),
+(1282712,162781,E'https://res.cloudinary.com/outdoorsy/image/upload/v1589136438/p/rentals/162781/images/weezh66ihjopf1hduzti.jpg'),
+(1282710,162781,E'https://res.cloudinary.com/outdoorsy/image/upload/v1589136437/p/rentals/162781/images/qbgovvd61zirhqiqesoq.jpg'),
+(1282707,162781,E'https://res.cloudinary.com/outdoorsy/image/upload/v1589136431/p/rentals/162781/images/kjlvjokp6buw0ubtvbbx.jpg'),
+(1282706,162781,E'https://res.cloudinary.com/outdoorsy/image/upload/v1589136430/p/rentals/162781/images/zzxlnwsqyzctzhvwipvl.jpg'),
+(1282705,162781,E'https://res.cloudinary.com/outdoorsy/image/upload/v1589136428/p/rentals/162781/images/qtdfylqaquwp2is2duam.jpg'),
+(1282704,162781,E'https://res.cloudinary.com/outdoorsy/image/upload/v1589136427/p/rentals/162781/images/ldgh3x6iwzy6qflp1kpm.jpg'),
+(1297491,164961,E'https://res.cloudinary.com/outdoorsy/image/upload/v1590510975/undefined/rentals/164961/images/p70benzmweddoziughfe.jpg'),
+(1297480,164961,E'https://res.cloudinary.com/outdoorsy/image/upload/v1590509276/undefined/rentals/164961/images/fyzummw5k4pc0gqdxse9.jpg'),
+(1297307,164961,E'https://res.cloudinary.com/outdoorsy/image/upload/v1590500837/undefined/rentals/164961/images/t3nkxdl0ua8g6gp1idcm.jpg'),
+(1297305,164961,E'https://res.cloudinary.com/outdoorsy/image/upload/v1590500637/undefined/rentals/164961/images/lmohoqfpauhuoabyetgk.jpg'),
+(1297476,164961,E'https://res.cloudinary.com/outdoorsy/image/upload/v1590509193/undefined/rentals/164961/images/gue2sr6un5l9qhgptopd.jpg'),
+(1297483,164961,E'https://res.cloudinary.com/outdoorsy/image/upload/v1590509379/undefined/rentals/164961/images/ir4tllhaeyfefq1iz1dj.jpg'),
+(1297304,164961,E'https://res.cloudinary.com/outdoorsy/image/upload/v1590500510/undefined/rentals/164961/images/vsfakucplsccubqghocn.jpg'),
+(1297479,164961,E'https://res.cloudinary.com/outdoorsy/image/upload/v1590509216/undefined/rentals/164961/images/djeuv8tznpw4bhnk5iyx.jpg'),
+(1296913,164961,E'https://res.cloudinary.com/outdoorsy/image/upload/v1590450539/p/rentals/164961/images/ugyebfp7fvqawugvcpqe.jpg'),
+(1297335,164961,E'https://res.cloudinary.com/outdoorsy/image/upload/v1590501205/undefined/rentals/164961/images/o3lzcssutt2xefwqzna1.jpg');
+		</sql>
+	</changeSet>
+</databaseChangeLog>
