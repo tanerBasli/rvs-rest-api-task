@@ -1,7 +1,5 @@
 package rentalvehicles.util;
 
-
-
 public final class Consts {	
 	public static final String requestParamsIds ="ids";
 	public static final String requestParamsPageLimit ="page_limit";
